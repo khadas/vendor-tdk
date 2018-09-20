@@ -555,6 +555,7 @@ TEE_Result TEE_Tvp_Get_Display_Size(uint32_t *width, uint32_t *height);
  *     flags: not used
  */
 TEE_Result TEE_Tvp_Set_Video_Layer(uint32_t video_layer, uint32_t enable, uint32_t flags);
+TEE_Result TEE_Tvp_Get_Video_Layer(uint32_t video_layer, uint32_t *enable);
 
 TEE_Result TEE_Video_Load_FW(uint8_t *firmware, uint32_t fw_size,
 		uint8_t *info, uint32_t info_size);
