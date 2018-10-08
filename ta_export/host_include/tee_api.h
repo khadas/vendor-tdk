@@ -121,7 +121,7 @@ const void *TEE_GetInstanceData(void);
 
 void *TEE_Malloc(uint32_t size, uint32_t hint);
 
-void *TEE_Realloc(const void *buffer, uint32_t newSize);
+void *TEE_Realloc(void *buffer, uint32_t newSize);
 
 void TEE_Free(void *buffer);
 
@@ -496,6 +496,10 @@ typedef struct {
 } vdec_info_t;
 TEE_Result TEE_Vdec_Get_Info(vdec_info_t *info);
 
+TEE_Result TEE_Tvp_Enter(void);
+
+TEE_Result TEE_Tvp_Exit(void);
+
 TEE_Result TEE_Vdec_Mmap(paddr_t pa, size_t size, vaddr_t *va);
 
 TEE_Result TEE_Vdec_Munmap(paddr_t pa, size_t size);
@@ -530,6 +534,27 @@ TEE_Result TEE_Efuse_Write_Block(uint8_t *inbuf, uint32_t block);
  *     auth = 0, mode = 0, HDCP authentication failed
  */
 TEE_Result TEE_HDCP_Get_State(uint32_t *mode, uint32_t *auth);
+/*
+ * Get HDCP Streaming ID
+ *     type = 0x00, Type 0 Content Stream
+ *     type = 0x01, Type 1 Content Stream
+ *     type = 0x02~0xFF, Reserved for future use only
+ */
+TEE_Result TEE_HDCP_Set_StreamID(uint32_t type);
+
+TEE_Result TEE_HDCP_Get_StreamID(uint32_t *type);
+
+TEE_Result TEE_Tvp_Get_Video_Size(uint32_t *width, uint32_t *height);
+
+TEE_Result TEE_Tvp_Get_Display_Size(uint32_t *width, uint32_t *height);
+
+/*
+ * Set Video Layer
+ *     video layer: 1: video layer1, 2: video layer2
+ *     eanble: 0: Disable Video Layer, 1: Enable Video Layer
+ *     flags: not used
+ */
+TEE_Result TEE_Tvp_Set_Video_Layer(uint32_t video_layer, uint32_t enable, uint32_t flags);
 
 TEE_Result TEE_Video_Load_FW(uint8_t *firmware, uint32_t fw_size,
 		uint8_t *info, uint32_t info_size);
