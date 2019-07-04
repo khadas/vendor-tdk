@@ -74,3 +74,5 @@ cscope.*
 
 #linuxdriver is a git
 linuxdriver/
+ta_export/scripts/Crypto
+ta_export/keys
