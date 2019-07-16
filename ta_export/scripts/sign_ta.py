@@ -18,6 +18,7 @@ def get_args():
 	parser.add_argument('--ta_aes_iv', type=str, default='null', help='Name of aes iv file')
 	parser.add_argument('--ta_aes_key_iv_enc', type=str, default='null', help='Name of encryped aes key iv file')
 	parser.add_argument('--ta_cvn', type=str, default='null', help='TA Current Version Number')
+	parser.add_argument('--ta_marketid', type=str, default='null', help='TA Market ID')
 	parser.add_argument('--in', required=True, dest='inf', help='Name of input file')
 	parser.add_argument('--out', type=str, default='null', help='Name of output file')
 
@@ -58,6 +59,11 @@ def main():
 	args = get_args()
 	if args.out == 'null':
 		args.out = args.inf
+
+	if args.ta_marketid == 'null' or args.ta_marketid == '':
+		ta_marketid = 0
+	else:
+		ta_marketid = int(args.ta_marketid, 16)
 
 	# TA version
 	if args.ta_cvn == 'null':
@@ -148,11 +154,12 @@ def main():
 	img_type = 2		# SHDR_TA_SIGNED
 	algo = 0x70004830	# TEE_ALG_RSASSA_PKCS1_V1_5_SHA256
 	arb_cvn = ta_cvn
+	marketid = ta_marketid
 
 	h_key = SHA256.new()
 	shdr = struct.pack('<IIIIIIIIIIIIIIII', \
 		magic, version, 0, algo, arb_cvn, img_type, img_size, aes_key_type,\
-		0, 0, 0, 0, 0, 0, 0, 0)
+		marketid, 0, 0, 0, 0, 0, 0, 0)
 
 	h_elf = SHA256.new()
 	h_elf.update(img)
@@ -169,6 +176,7 @@ def main():
 	print '              ta_aes_key.name = ' + args.ta_aes_key
 	print '              ta_aes_iv.name  = ' + args.ta_aes_iv
 	print '       ta_aes_key_iv_enc.name = ' + args.ta_aes_key_iv_enc
+	print '                  ta_marketid = ' + hex(marketid)
 	print '                      ta.name = ' + args.inf
 	print '    Output:           ta.name = ' + args.out
 

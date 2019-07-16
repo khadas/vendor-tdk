@@ -136,6 +136,12 @@ int32_t TEE_MemCompare(const void *buffer1, const void *buffer2, uint32_t size);
 
 void *TEE_MemFill(void *buff, uint32_t x, uint32_t size);
 
+TEE_Result TEE_ReadReg(uint32_t reg, uint32_t *val);
+
+TEE_Result TEE_WriteReg(uint32_t reg, uint32_t val);
+
+TEE_Result TEE_UpdateMVN(uint32_t type, uint32_t flag, uint32_t check);
+
 /* Data and Key Storage API  - Generic Object Functions */
 
 void TEE_GetObjectInfo(TEE_ObjectHandle object, TEE_ObjectInfo *objectInfo);
@@ -376,6 +382,13 @@ TEE_Result TEE_ExportKey(TEE_ObjectHandle key, void *publibKeyBuffer,
 TEE_Result TEE_ImportKey(TEE_ObjectHandle key, void *keyBuffer,
 		uint32_t keyBufferLen);
 
+TEE_Result TEE_Crypto_Run(char *alg, uint8_t *srcaddr, uint32_t datalen,
+		   uint8_t *dstaddr, uint8_t *keyaddr, uint32_t keysize,
+		   uint8_t *ivaddr, uint8_t dir);
+
+TEE_Result TEE_Crypto_Set_Key_IV(uint32_t threadidx, uint32_t *in,
+		uint32_t len, uint8_t swap, uint32_t from_kl, uint32_t dest_idx);
+
 /* Date & Time API */
 
 void TEE_GetSystemTime(TEE_Time *time);
@@ -539,6 +552,14 @@ TEE_Result TEE_Efuse_Write_Block(uint8_t *inbuf, uint32_t block);
  *     auth = 0, mode = 0, HDCP authentication failed
  */
 TEE_Result TEE_HDCP_Get_State(uint32_t *mode, uint32_t *auth);
+
+/**
+ * Get HDMI state.
+ * state = 1 plugged in
+ * state = 0 not plugged in
+ */
+TEE_Result TEE_HDMI_Get_State(uint32_t *state, uint32_t *reserved);
+
 /*
  * Get HDCP Streaming ID
  *     type = 0x00, Type 0 Content Stream
@@ -562,6 +583,13 @@ TEE_Result TEE_Tvp_Get_Display_Size(uint32_t *width, uint32_t *height);
 TEE_Result TEE_Tvp_Set_Video_Layer(uint32_t video_layer, uint32_t enable, uint32_t flags);
 TEE_Result TEE_Tvp_Get_Video_Layer(uint32_t video_layer, uint32_t *enable);
 
+/*
+ * Set Audio mute
+ *     mute = 0, unmute audio
+ *     mute = 1, mute audio
+ */
+TEE_Result TEE_Tvp_Set_Audio_Mute(uint32_t mute);
+
 TEE_Result TEE_Video_Load_FW(uint8_t *firmware, uint32_t fw_size,
 		uint8_t *info, uint32_t info_size);
 /*
@@ -583,14 +611,63 @@ TEE_Result TEE_Desc_Set_Pid(int dsc_no, int fd, int pid);
 TEE_Result TEE_Desc_Set_Key(int dsc_no, int fd, int parity, uint8_t *key,
 		uint32_t key_type);
 
-TEE_Result TEE_KL_Run(void *ra);
+TEE_Result TEE_Desc_Set_DVR_Info(uint8_t svc_idx, uint8_t pid_count, uint16_t *pids);
 
-TEE_Result TEE_KL_GetResponseToChallenge(void *cra);
+TEE_Result TEE_Desc_Is_DVR(uint8_t svc_idx, uint8_t pid_count, uint16_t *pids);
+
+/*
+ * @brief
+ * Key Ladder Challenge-Response Mechanism
+ *
+ * @rk_cfg_idx(input)
+ * root key config index, value: 0~10
+ *
+ * @ek[16](input)
+ * encrypted key, {n}-levels Key Ladder: ek[16] is ek{n - 1}, {n} value: 3~7,
+ * for example, 5-levels Key Ladder: ek[16] is ek4
+ *
+ * @nonce[16](input)
+ *
+ * @dnonce[16](output)
+ * decrypted nonce
+ */
+TEE_Result TEE_KL_GetResponseToChallenge(
+		uint8_t rk_cfg_idx,
+		const uint8_t ek[16],
+		const uint8_t nonce[16],
+		uint8_t dnonce[16]);
+
+/*
+ * @brief
+ * run Key Ladder
+ *
+ * @levels(input)
+ * encrypted layer number, value: 3~7
+ *
+ * @rk_cfg_idx(input)
+ * root key config index, value: 0~10
+ *
+ * @eks[7][16](input)
+ * encrypted keys, eks[0] is ecw, eks[n] is ek{n}, {n} value: 1~6
+ */
+TEE_Result TEE_KL_Run(
+		uint8_t levels,
+		uint8_t rk_cfg_idx,
+		const uint8_t eks[7][16]);
 
 TEE_Result TEE_Desc_Exit(void);
 
 TEE_Result TEE_Desc_Init(void);
 
 TEE_Result TEE_Desc_Set_Output(int module, int output);
+
+TEE_Result TEE_Callback(uint32_t paramTypes,
+		TEE_Param params[TEE_NUM_PARAMS]);
+
+TEE_Result TEE_Mutex_Lock(void);
+TEE_Result TEE_Mutex_Unlock(void);
+
+TEE_Result TEE_Shm_Mmap(uint32_t va, uint32_t size);
+TEE_Result TEE_Shm_Munmap(uint32_t va, uint32_t size);
 
 #endif /* TEE_API_H */
