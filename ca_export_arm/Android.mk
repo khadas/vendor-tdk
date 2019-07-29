@@ -32,8 +32,8 @@ endif
 include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
-LOCAL_SRC_FILES_32 := lib_android/libteec.so
-LOCAL_SRC_FILES_64 := ../ca_export_arm64/lib_android/libteec.so
+LOCAL_SRC_FILES_32 := lib_android/libteec_sys.so
+LOCAL_SRC_FILES_64 := ../ca_export_arm64/lib_android/libteec_sys.so
 LOCAL_MODULE := libteec_sys
 LOCAL_MULTILIB := both
 LOCAL_MODULE_SUFFIX := .so
