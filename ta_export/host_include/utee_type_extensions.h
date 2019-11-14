@@ -27,6 +27,8 @@
 #ifndef UTEE_TYPE_EXTENSIONS_H
 #define UTEE_TYPE_EXTENSIONS_H
 
+#include <tee_internal_api.h>
+
 #define TEE_EXTEND_VDEC_GET_INFO                        0
 #define TEE_EXTEND_VDEC_MMAP                            2
 #define TEE_EXTEND_VDEC_MUNMAP                          3
@@ -93,11 +95,20 @@
 #define TEE_EXTEND_WRITE_REG                            65
 #define TEE_EXTEND_UPDATE_MVN                           66
 #define TEE_EXTEND_TVP_SET_AUDIO_MUTE                   68
-#define TEE_EXTEND_DESC_SET_DVR_INFO                    69
-#define TEE_EXTEND_DESC_IS_DVR                          70
+#define TEE_EXTEND_DESC_SET_ALGO                        69
+#define TEE_EXTEND_DESC_SET_MODE                        70
 #define TEE_EXTEND_WM_SET_PARA_LAST                     71
 #define TEE_EXTEND_HDMI_GET_STATE                       72
 #define TEE_EXTEND_CALLBACK                             73
+#define TEE_EXTEND_CRYPTO_AE_DECRYPT_WITH_DERIVED_KWRAP 74
+#define TEE_EXTEND_CRYPTO_AE_DECRYPT_WITH_DERIVED_KSECRET 75
+#define TEE_EXTEND_MAILBOX_SEND_CMD                     76
+#define TEE_EXTEND_KL_MSR_LUT                           77
+#define TEE_EXTEND_KL_MSR_ECW_TWO_LAYER                 78
+#define TEE_EXTEND_KL_MSR_ECW_TWO_LAYER_WITH_TF         79
+#define TEE_EXTEND_KL_MSR_PVR_THREE_LAYER               80
+#define TEE_EXTEND_KL_MSR_LOAD_CCCK                     81
+#define TEE_EXTEND_CIPHER_DECRYPT_WITH_KWRAP            82
 
 struct tee_vdec_info_param {
 	paddr_t pa;
@@ -275,6 +286,18 @@ struct tee_desc_reset_param {
 	int all;
 };
 
+struct tee_desc_set_algo_param {
+	int dsc_no;
+	int fd;
+	int algo;
+};
+
+struct tee_desc_set_mode_param {
+	int dsc_no;
+	int fd;
+	int mode;
+};
+
 struct tee_desc_set_pid_param {
 	int dsc_no;
 	int fd;
@@ -288,6 +311,15 @@ struct tee_desc_set_key_param {
 	unsigned char *key;
 	uint32_t key_type;
 };
+
+struct tee_kl_req_ecw_param {
+	struct req_ecw ecw;
+};
+
+struct tee_kl_etask_lut_param {
+	struct req_etask_lut lut;
+};
+
 
 struct tee_desc_set_output_param {
 	int module;
@@ -406,12 +438,6 @@ typedef struct {
 } ngwm_set_24bit_mode_param;
 #endif
 
-struct tee_desc_dvr_info_param {
-	uint8_t svc_idx;
-	uint8_t pid_count;
-	uint16_t pids[8];
-};
-
 struct tee_callback_param {
 	uint32_t client_id;
 	uint32_t context_id;
@@ -470,6 +496,24 @@ struct tee_update_mvn_param {
 	uint32_t type;
 	uint32_t flag;
 	uint32_t check;
+};
+
+struct tee_mailbox_param {
+	uint32_t command;
+	uint8_t *inbuf;
+	uint32_t inlen;
+	uint8_t *outbuf;
+	uint32_t outlen;
+	uint32_t response;
+};
+
+struct tee_cipher_decrypt_with_kwrap_param {
+	const uint8_t *iv;
+	uint32_t iv_len;
+	const uint8_t *src;
+	uint32_t src_len;
+	uint8_t *dst;
+	uint32_t *dst_len;
 };
 
 #endif /* UTEE_TYPE_EXTENSIONS_H */

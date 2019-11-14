@@ -382,12 +382,16 @@ TEE_Result TEE_ExportKey(TEE_ObjectHandle key, void *publibKeyBuffer,
 TEE_Result TEE_ImportKey(TEE_ObjectHandle key, void *keyBuffer,
 		uint32_t keyBufferLen);
 
+
 TEE_Result TEE_Crypto_Run(char *alg, uint8_t *srcaddr, uint32_t datalen,
 		   uint8_t *dstaddr, uint8_t *keyaddr, uint32_t keysize,
 		   uint8_t *ivaddr, uint8_t dir);
 
 TEE_Result TEE_Crypto_Set_Key_IV(uint32_t threadidx, uint32_t *in,
 		uint32_t len, uint8_t swap, uint32_t from_kl, uint32_t dest_idx);
+
+TEE_Result TEE_CipherDecrypt_With_Kwrap(const uint8_t *iv, uint32_t iv_len,
+		const uint8_t *src, uint32_t src_len, uint8_t *dst, uint32_t *dst_len);
 
 /* Date & Time API */
 
@@ -606,14 +610,14 @@ TEE_Result TEE_Desc_FreeChannel(int dsc_no, int fd);
 
 TEE_Result TEE_Desc_Reset(int dsc_no, int all);
 
+TEE_Result TEE_Desc_Set_Algo(int dsc_no, int fd, int algo);
+
+TEE_Result TEE_Desc_Set_Mode(int dsc_no, int fd, int mode);
+
 TEE_Result TEE_Desc_Set_Pid(int dsc_no, int fd, int pid);
 
 TEE_Result TEE_Desc_Set_Key(int dsc_no, int fd, int parity, uint8_t *key,
 		uint32_t key_type);
-
-TEE_Result TEE_Desc_Set_DVR_Info(uint8_t svc_idx, uint8_t pid_count, uint16_t *pids);
-
-TEE_Result TEE_Desc_Is_DVR(uint8_t svc_idx, uint8_t pid_count, uint16_t *pids);
 
 /*
  * @brief
@@ -655,6 +659,50 @@ TEE_Result TEE_KL_Run(
 		uint8_t rk_cfg_idx,
 		const uint8_t eks[7][16]);
 
+struct desc_info {
+	uint8_t no;//desc dev no: 0, 1
+	uint8_t ch_id;//channel ID: 0 ~ 7
+	uint8_t algo;//CSA, AES_ECB, AES_CBC
+	uint8_t type;//Even, Odd
+};
+
+struct req_ecw {
+	uint8_t kl_num;
+	uint8_t kl_layer;
+	uint8_t app_id;
+	uint8_t use_tf;
+	uint8_t ecwak[16];
+	uint8_t ecwsk[16];
+	uint8_t tecw[16];
+	uint8_t use_hw_kl;
+	struct desc_info desc;
+	uint8_t slot_id;
+};
+
+struct req_etask_lut {
+	uint8_t kl_num;
+	uint8_t reserved[3];
+	uint8_t etask[16];
+	uint32_t tf_len;
+	uint8_t tf[416];
+};
+TEE_Result TEE_KL_MSR_ecw_two_layer(struct req_ecw *ecw);
+
+TEE_Result TEE_KL_MSR_ecw_two_layer_with_tf(struct req_ecw *ecw);
+
+TEE_Result TEE_KL_MSR_ecw_three_layer(struct req_ecw *ecw);
+
+TEE_Result TEE_KL_MSR_ecw_three_layer_with_tf(struct req_ecw *ecw);
+
+TEE_Result TEE_KL_MSR_pvr_two_layer(struct req_ecw *ecw);
+
+TEE_Result TEE_KL_MSR_pvr_three_layer(struct req_ecw *ecw);
+
+TEE_Result TEE_KL_MSR_lut(struct req_etask_lut *lut);
+
+TEE_Result TEE_KL_MSR_load_ccck(uint8_t ccck[16]);
+
+
 TEE_Result TEE_Desc_Exit(void);
 
 TEE_Result TEE_Desc_Init(void);
@@ -669,5 +717,8 @@ TEE_Result TEE_Mutex_Unlock(void);
 
 TEE_Result TEE_Shm_Mmap(uint32_t va, uint32_t size);
 TEE_Result TEE_Shm_Munmap(uint32_t va, uint32_t size);
+
+TEE_Result TEE_Mailbox_Send_Cmd(uint32_t command, uint8_t *inbuf,
+		uint32_t inlen, uint8_t *outbuf, uint32_t *outlen, uint32_t *response);
 
 #endif /* TEE_API_H */
