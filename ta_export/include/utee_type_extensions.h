@@ -109,6 +109,9 @@
 #define TEE_EXTEND_KL_MSR_PVR_THREE_LAYER               80
 #define TEE_EXTEND_KL_MSR_LOAD_CCCK                     81
 #define TEE_EXTEND_CIPHER_DECRYPT_WITH_KWRAP            82
+#define TEE_EXTEND_TVP_OPEN_CHAN                        83
+#define TEE_EXTEND_TVP_CLOSE_CHAN                       84
+#define TEE_EXTEND_TVP_BIND_CHAN                        85
 
 struct tee_vdec_info_param {
 	paddr_t pa;
@@ -116,9 +119,20 @@ struct tee_vdec_info_param {
 };
 
 #define TEE_TVP_POOL_MAX_COUNT	4
-struct tee_tvp_init_param {
-	size_t count;
-	struct tee_vdec_info_param p[TEE_TVP_POOL_MAX_COUNT];
+struct tee_tvp_open_chan_param {
+	uint32_t cfg;
+	struct tee_vdec_info_param input;
+	struct tee_vdec_info_param output[TEE_TVP_POOL_MAX_COUNT];
+	TEE_Tvp_Handle handle;
+};
+
+struct tee_tvp_close_chan_param {
+	TEE_Tvp_Handle handle;
+};
+
+struct tee_tvp_bind_chan_param {
+	TEE_Tvp_Handle handle;
+	TEE_UUID uuid;
 };
 
 struct tee_vdec_mmap_param {

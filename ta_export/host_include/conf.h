@@ -6,7 +6,7 @@
 #define CFG_ARM32_core 1
 #define CFG_ARM32_ta_arm32 1
 /* CFG_ARM64_core is not set */
-#define CFG_ATOS_IMPL_VERSION 0x20402
+#define CFG_ATOS_IMPL_VERSION 0x20404
 /* CFG_AV_CONTROL is not set */
 /* CFG_BOOT_SECONDARY_REQUEST is not set */
 #define CFG_CACHE_API 1

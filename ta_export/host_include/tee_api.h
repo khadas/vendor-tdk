@@ -512,28 +512,41 @@ void TEE_BigIntComputeFMM(TEE_BigIntFMM *dest, const TEE_BigIntFMM *op1,
 			  const TEE_BigIntFMM *op2, const TEE_BigInt *n,
 			  const TEE_BigIntFMMContext *context);
 
+#define TEE_TVP_VIDEO_LAYER_OFFSET      0
+#define TEE_TVP_VIDEO_TYPE_OFFSET       4
+
+#define TEE_TVP_CFG_NO_VIDEO_LAYER      (0<<TEE_TVP_VIDEO_LAYER_OFFSET)
+#define TEE_TVP_CFG_VIDEO_LAYER_1       (1<<TEE_TVP_VIDEO_LAYER_OFFSET)
+#define TEE_TVP_CFG_VIDEO_LAYER_2       (2<<TEE_TVP_VIDEO_LAYER_OFFSET)
+#define TEE_TVP_CFG_DRM_PLAYBACK        (1<<TEE_TVP_VIDEO_TYPE_OFFSET)
+#define TEE_TVP_CFG_DRM_RECORD          (2<<TEE_TVP_VIDEO_TYPE_OFFSET)
+#define TEE_TVP_CFG_CAS_PLAYBACK        (3<<TEE_TVP_VIDEO_TYPE_OFFSET)
+#define TEE_TVP_CFG_CAS_RECORD          (4<<TEE_TVP_VIDEO_TYPE_OFFSET)
+
 typedef struct {
 	paddr_t pa;
 	size_t size;
 } vdec_info_t;
 
+typedef struct {
+	uint32_t cfg;
+	vdec_info_t input;
+	vdec_info_t output[4];
+} tvp_channel_cfg_t;
+
 TEE_Result TEE_Vdec_Get_Info(vdec_info_t *info);
 
-TEE_Result TEE_Tvp_Init(vdec_info_t *info, size_t count);
+TEE_Tvp_Handle TEE_Tvp_Open_Channel(tvp_channel_cfg_t *cfg);
 
-TEE_Result TEE_Tvp_Enter(void);
+void TEE_Tvp_Close_Channel(TEE_Tvp_Handle handle);
 
-TEE_Result TEE_Tvp_Exit(void);
+TEE_Result TEE_Tvp_Bind_Channel(TEE_Tvp_Handle handle, TEE_UUID *uuid);
 
 TEE_Result TEE_Vdec_Mmap(paddr_t pa, size_t size, vaddr_t *va);
 
 TEE_Result TEE_Vdec_Munmap(paddr_t pa, size_t size);
 
 TEE_Result TEE_Protect_Mem(unsigned int startaddr, unsigned int size, int enable);
-
-TEE_Result TEE_Protect_Mem2(unsigned int startaddr, unsigned int size, int enable);
-
-TEE_Result TEE_Setting_Device(int device_number, int port, int enable);
 
 TEE_Result TEE_Unify_Read(uint8_t *keyname, uint32_t keynamelen,
 			uint8_t *keybuf, uint32_t keylen, uint32_t *readlen);
@@ -552,7 +565,7 @@ TEE_Result TEE_Efuse_Write_Block(uint8_t *inbuf, uint32_t block);
 /*
  * Get HDCP authentication state
  *     auth = 1, mode = 1, HDCP 1.4 authenticated
- *     auth = 0, mode = 2, HDCP 2.2 authenticated
+ *     auth = 1, mode = 2, HDCP 2.2 authenticated
  *     auth = 0, mode = 0, HDCP authentication failed
  */
 TEE_Result TEE_HDCP_Get_State(uint32_t *mode, uint32_t *auth);
