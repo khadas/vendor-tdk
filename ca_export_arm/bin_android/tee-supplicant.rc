@@ -15,7 +15,6 @@ on property:vold.post_fs_data_done=1
 	start tee_supplicant
 
 service tee_supplicant /vendor/bin/tee-supplicant
-	oneshot
 	class core
 	user root
 	group system
