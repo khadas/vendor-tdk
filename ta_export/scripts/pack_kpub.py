@@ -151,9 +151,13 @@ def main():
 
 	if args.outf_os == 'null':
 		args.outf_os = args.inf_os
-	outf_os = open(args.outf_os, 'rwb+')
-	outf_os.write(get_raw_os(args.inf_os))
 
+	if args.outf_os != args.inf_os:
+		outf_os = open(args.outf_os, 'wb')
+		outf_os.write(get_raw_os(args.inf_os))
+		outf_os.close()
+
+	outf_os = open(args.outf_os, 'rb+')
 	if args.inf_rsk != 'null':
 		key_idx = 0
 		key_type = 0x00000001
