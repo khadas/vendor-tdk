@@ -60,6 +60,7 @@
 #define CFG_CRYPTO_SIZE_OPTIMIZATION 1
 #define CFG_CRYPTO_XTS 1
 /* CFG_DESCRAMBLER is not set */
+#define CFG_DEVICE_KEY 1
 /* CFG_DT is not set */
 #define CFG_DTB_MAX_SIZE 0x10000
 #define CFG_EFUSE 1
