@@ -544,6 +544,8 @@ TEE_Result TEE_Tvp_Bind_Channel(TEE_Tvp_Handle handle, TEE_UUID *uuid);
 
 TEE_Result TEE_Vdec_Mmap(paddr_t pa, size_t size, vaddr_t *va);
 
+TEE_Result TEE_Vdec_Mmap_Cached(paddr_t pa, size_t size, vaddr_t *va);
+
 TEE_Result TEE_Vdec_Munmap(paddr_t pa, size_t size);
 
 TEE_Result TEE_Protect_Mem(unsigned int startaddr, unsigned int size, int enable);

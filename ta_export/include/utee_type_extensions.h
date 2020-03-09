@@ -119,6 +119,7 @@
 #define TEE_EXTEND_TIMER_CREATE                         89
 #define TEE_EXTEND_TIMER_DESTROY                        90
 #define TEE_EXTEND_ASYMM_PUBKEY_DECRYPT                 91
+#define TEE_EXTEND_VDEC_MMAP_CACHED                     92
 
 
 #define TEE_EXTEND_CALLBACK_V1                          58
