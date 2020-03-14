@@ -59,6 +59,7 @@
 #define CFG_CRYPTO_SHA512 1
 #define CFG_CRYPTO_SIZE_OPTIMIZATION 1
 #define CFG_CRYPTO_XTS 1
+/* CFG_DEBUG is not set */
 /* CFG_DESCRAMBLER is not set */
 #define CFG_DEVICE_KEY 1
 /* CFG_DT is not set */
@@ -80,7 +81,7 @@
 /* CFG_KDF_MKL_TEST is not set */
 #define CFG_KERN_LINKER_ARCH arm
 #define CFG_KERN_LINKER_FORMAT elf32-littlearm
-#define CFG_KEYMASTER3 1
+/* CFG_KEYMASTER3 is not set */
 #define CFG_LIBUTILS_WITH_ISOC 1
 #define CFG_LPAE_ADDR_SPACE_SIZE (1ull << 32)
 #define CFG_LTC_OPTEE_THREAD 1
@@ -101,6 +102,7 @@
 #define CFG_REE_LOGGER 1
 /* CFG_REG_DEBUG is not set */
 /* CFG_RNG_API is not set */
+#define CFG_RNG_POOL_WAIT_FILLED 1
 #define CFG_RPMB_DRIVER 1
 #define CFG_RPMB_FS_DEV_ID 2
 /* CFG_RPMB_FS_FORMAT is not set */
@@ -118,12 +120,13 @@
 #define CFG_TA_BIGNUM_MAX_BITS 2048
 #define CFG_TA_FLOAT_SUPPORT 1
 /* CFG_TA_GPROF_SUPPORT is not set */
+/* CFG_TA_HEADER_V1_COMPAT is not set */
 #define CFG_TA_MBEDTLS 1
 #define CFG_TA_MBEDTLS_SELF_TEST 1
 /* CFG_TA_MUTEX is not set */
 #define CFG_TEE_API_VERSION GPD-1.1-dev
 /* CFG_TEE_CORE_DEBUG is not set */
-#define CFG_TEE_CORE_EMBED_INTERNAL_TESTS 1
+/* CFG_TEE_CORE_EMBED_INTERNAL_TESTS is not set */
 #define CFG_TEE_CORE_LOG_LEVEL 2
 /* CFG_TEE_CORE_MALLOC_DEBUG is not set */
 #define CFG_TEE_CORE_TA_TRACE 1
@@ -136,6 +139,7 @@
 #define CFG_TEE_RAM_VA_SIZE 0x100000
 #define CFG_TEE_TA_LOG_LEVEL 1
 /* CFG_TEE_TA_MALLOC_DEBUG is not set */
+/* CFG_TEE_TIMER is not set */
 /* CFG_TVP is not set */
 #define CFG_TVP_MEM_POOL1_SIZE 0x30000000
 #define CFG_TVP_MEM_POOL1_START 0x10000000
@@ -147,12 +151,13 @@
 #define CFG_VDEC_RAM_SIZE 0
 /* CFG_VIDEO_FW_LOAD is not set */
 #define CFG_VIDEO_FW_RAM_SIZE 0
+/* CFG_VMX_240_COMPAT is not set */
 /* CFG_VMX_TA is not set */
-#define CFG_WATERMARK 1
-#define CFG_WATERMARK_NEXGUARD 1
-#define CFG_WATERMARK_VERIMATRIX 1
+/* CFG_WATERMARK is not set */
+/* CFG_WATERMARK_NEXGUARD is not set */
+/* CFG_WATERMARK_VERIMATRIX is not set */
 #define CFG_WITH_ARM_TRUSTED_FW 1
-/* CFG_WITH_DEBUG is not set */
+#define CFG_WITH_DEBUG 1
 /* CFG_WITH_PAGER is not set */
 #define CFG_WITH_SOFTWARE_PRNG 1
 #define CFG_WITH_STACK_CANARIES 1

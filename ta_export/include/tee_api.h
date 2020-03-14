@@ -344,6 +344,12 @@ TEE_Result TEE_AsymmetricDecrypt(TEE_OperationHandle operation,
 				 uint32_t srcLen, void *destData,
 				 uint32_t *destLen);
 
+TEE_Result TEE_AsymmetricPubKeyDecrypt(TEE_OperationHandle operation,
+				 const TEE_Attribute *params,
+				 uint32_t paramCount, void *srcData,
+				 uint32_t srcLen, void *destData,
+				 uint32_t *destLen);
+
 TEE_Result TEE_AsymmetricSign(TEE_OperationHandle operation,
 				    TEE_Attribute *params,
 				    uint32_t paramCount, void *message,
@@ -742,4 +748,34 @@ TEE_Result TEE_Mailbox_Send_Cmd(uint32_t command, uint8_t *inbuf,
 TEE_Result TEE_Km_Get_Boot_Params(uint32_t *locked, uint32_t *boot_state,
 		uint8_t *boot_key, uint32_t *boot_key_len,
 		uint8_t *boot_hash, uint32_t *boot_hash_len);
+
+#define TEE_SECURE_TIMER_FLAG_ONESHOT   0
+#define TEE_SECURE_TIMER_FLAG_PERIOD    1
+typedef void *TEE_TimerHandle;
+typedef void (*tee_timer_cb_t)(void *args);
+
+/*
+ * Create a timer for TA
+ *
+ * [in]  cb		Timer callback after timeout
+ * [in]  args		Arguments for callback
+ * [in]  timeout	Timeout
+ * [in]  flags		Flags
+ *
+ * Return NULL if any error, timer handle if success
+ */
+TEE_TimerHandle TEE_Timer_Create(tee_timer_cb_t cb, void *args,
+		uint32_t timeout, uint32_t flags);
+
+/*
+ * Destroy a timer for TA
+ *
+ * [in]  handle		Timer handle
+ *
+ * Note: The timer must be destoryed before closing TA session,
+ *       suggest that check and destory all TA timer
+ *       in TA_CloseSessionEntryPoint()
+ */
+void TEE_Timer_Destroy(TEE_TimerHandle handle);
+
 #endif /* TEE_API_H */

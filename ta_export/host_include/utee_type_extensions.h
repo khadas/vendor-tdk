@@ -116,6 +116,12 @@
 #define TEE_EXTEND_KM_SET_BOOT_PARAMS                   86
 #define TEE_EXTEND_KM_GET_BOOT_PARAMS                   87
 #define TEE_EXTEND_CRYPTO_RUN_EXT                       88
+#define TEE_EXTEND_TIMER_CREATE                         89
+#define TEE_EXTEND_TIMER_DESTROY                        90
+#define TEE_EXTEND_ASYMM_PUBKEY_DECRYPT                 91
+
+
+#define TEE_EXTEND_CALLBACK_V1                          58
 
 struct tee_vdec_info_param {
 	paddr_t pa;
@@ -261,13 +267,11 @@ struct tee_memset_param {
 	uint32_t size;
 };
 
-#if defined(CFG_WATERMARK_VERIMATRIX)
 typedef struct {
 	void *para;
 	uint32_t para_len;
 	uint8_t svc_idx;
 } tee_vxwm_param;
-#endif
 
 struct tee_video_fw_param {
 	void *firmware;
@@ -281,6 +285,14 @@ struct tee_kl_cr_param {
 	uint8_t ek[16];
 	uint8_t nonce[16];
 	uint8_t dnonce[16];
+};
+
+struct tee_kl_run_param_v1 {
+	unsigned int   dest;
+	unsigned char  kl_num;
+	unsigned char  kl_levels;
+	unsigned char  __padding[6];
+	unsigned char  keys[7][16];
 };
 
 struct tee_kl_run_param {
@@ -412,7 +424,6 @@ struct tee_storage_obj_close_param {
 	unsigned long obj;
 };
 
-#if defined(CFG_WATERMARK_NEXGUARD)
 typedef struct {
 	void *pxEmbedder;
 	uint32_t xSeed;
@@ -454,7 +465,6 @@ typedef struct {
 	void *pxEmbedder;
 	bool xIsEnabled;
 } ngwm_set_24bit_mode_param;
-#endif
 
 struct tee_callback_param {
 	uint32_t client_id;
@@ -546,6 +556,12 @@ struct tee_km_boot_params{
 struct tee_read_rng_pool_param {
 	uint8_t *out;
 	uint32_t size;
+};
+
+struct tee_timer_param {
+	uint32_t handle;
+	uint32_t timeout;
+	uint32_t flags;
 };
 
 #endif /* UTEE_TYPE_EXTENSIONS_H */
