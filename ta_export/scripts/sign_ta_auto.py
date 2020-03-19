@@ -32,11 +32,35 @@ def get_args():
 
 	return parser.parse_args()
 
+def is_signed_ta(ta):
+	import struct
+
+	with open(ta, 'rb') as f:
+		__magic, __version, __flags, __algo, \
+		__arb_cvn, __img_type, __img_size, __enc_type, \
+		__arb_type = struct.unpack('<9I', f.read(36))
+		if __img_type == 2:
+			return True
+		else:
+			return False
+
 def main():
 	import sys
 	import os
 	import logging
 	import subprocess
+
+	args = get_args()
+
+	if is_signed_ta(args.inf_unsigned_ta) == True:
+		if args.outf_signed_ta == 'null':
+			sys.exit(0)
+
+		with open(args.inf_unsigned_ta, 'rb') as f:
+			payload = f.read()
+		with open(args.outf_signed_ta, 'wb') as f:
+			f.write(payload)
+			sys.exit(0);
 
 	log = logging.getLogger("Core.Analysis.Processing")
 	INTERPRETER = "/usr/bin/python"
@@ -48,7 +72,6 @@ def main():
 	gen_cert_cmd = [INTERPRETER, file_path + "/gen_cert_key.py"]
 	sign_cmd = [INTERPRETER, file_path + "/sign_ta.py"]
 
-	args = get_args()
 	target_path = os.path.abspath(os.path.dirname(args.inf_unsigned_ta))
 	if args.outf_signed_ta == 'null':
 		args.outf_signed_ta = args.inf_unsigned_ta
