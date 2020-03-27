@@ -523,17 +523,6 @@ void TEE_BigIntComputeFMM(TEE_BigIntFMM *dest, const TEE_BigIntFMM *op1,
 			  const TEE_BigIntFMM *op2, const TEE_BigInt *n,
 			  const TEE_BigIntFMMContext *context);
 
-#define TEE_TVP_VIDEO_LAYER_OFFSET      0
-#define TEE_TVP_VIDEO_TYPE_OFFSET       4
-
-#define TEE_TVP_CFG_VIDEO_LAYER_NONE    (0<<TEE_TVP_VIDEO_LAYER_OFFSET)
-#define TEE_TVP_CFG_VIDEO_LAYER_1       (1<<TEE_TVP_VIDEO_LAYER_OFFSET)
-#define TEE_TVP_CFG_VIDEO_LAYER_2       (2<<TEE_TVP_VIDEO_LAYER_OFFSET)
-#define TEE_TVP_CFG_DRM_PLAYBACK        (1<<TEE_TVP_VIDEO_TYPE_OFFSET)
-#define TEE_TVP_CFG_DRM_RECORD          (2<<TEE_TVP_VIDEO_TYPE_OFFSET)
-#define TEE_TVP_CFG_CAS_PLAYBACK        (3<<TEE_TVP_VIDEO_TYPE_OFFSET)
-#define TEE_TVP_CFG_CAS_RECORD          (4<<TEE_TVP_VIDEO_TYPE_OFFSET)
-
 typedef struct {
 	paddr_t pa;
 	size_t size;
