@@ -123,7 +123,24 @@
 #define TEE_EXTEND_CIPHER_ENCRYPT_WITH_KWRAP            93
 
 
+// For CFG_VMX_240_COMPAT:
+#define TEE_EXTEND_TVP_ENTER_VMX_2017_240               33
+#define TEE_EXTEND_TVP_GET_VIDEO_SIZE_VMX_2017_240      35
+#define TEE_EXTEND_TVP_SET_VIDEO_LAYER_VMX_2017_240     37
+#define TEE_EXTEND_CALLBACK_VMX_2017_240                38
+#define TEE_EXTEND_CRYPTO_RUN_VMX_2017_240              40
+#define TEE_EXTEND_CRYPTO_SET_KEY_IV_VMX_2017_240       41
+#define TEE_EXTEND_SHM_MMAP_VMX_2017_240                42
+#define TEE_EXTEND_SHM_MUNMAP_VMX_2017_240              43
+#define TEE_EXTEND_READ_REG_VMX_2017_240                44
+#define TEE_EXTEND_WRITE_REG_VMX_2017_240               45
+#define TEE_EXTEND_UPDATE_MVN_VMX_2017_240              46
+#define TEE_EXTEND_READ_RNG_POOL_VMX_2017_240           47
+#define TEE_EXTEND_TVP_SET_AUDIO_MUTE_VMX_2017_240      48
+#define TEE_EXTEND_DESC_SET_DVR_INFO_VMX_2017_240       49
+#define TEE_EXTEND_DESC_IS_DVR_VMX_2017_240             50
 #define TEE_EXTEND_CALLBACK_V1                          58
+
 
 struct tee_vdec_info_param {
 	paddr_t pa;
@@ -356,6 +373,12 @@ struct tee_kl_etask_lut_param {
 struct tee_desc_set_output_param {
 	int module;
 	int output;
+};
+
+struct tee_desc_dvr_info_param {
+	uint8_t svc_idx;
+	uint8_t pid_count;
+	uint16_t pids[8];
 };
 
 struct tee_storage_obj_access_param {
