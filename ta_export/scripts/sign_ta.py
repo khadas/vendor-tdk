@@ -152,7 +152,7 @@ def is_signed_ta(ta):
 	import struct
 
 	f = open(ta, 'rb')
-	f.seek(24)
+	f.seek(20)
 	img_type = struct.unpack('<I', f.read(4))[0]
 	f.close()
 	if img_type == 2:
