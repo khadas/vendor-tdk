@@ -120,6 +120,7 @@
 #define TEE_EXTEND_TIMER_DESTROY                        90
 #define TEE_EXTEND_ASYMM_PUBKEY_DECRYPT                 91
 #define TEE_EXTEND_VDEC_MMAP_CACHED                     92
+#define TEE_EXTEND_CIPHER_ENCRYPT_WITH_KWRAP            93
 
 
 #define TEE_EXTEND_CALLBACK_V1                          58
@@ -535,6 +536,15 @@ struct tee_mailbox_param {
 	uint8_t *outbuf;
 	uint32_t outlen;
 	uint32_t response;
+};
+
+struct tee_cipher_encrypt_with_kwrap_param {
+	const uint8_t *iv;
+	uint32_t iv_len;
+	const uint8_t *src;
+	uint32_t src_len;
+	uint8_t *dst;
+	uint32_t *dst_len;
 };
 
 struct tee_cipher_decrypt_with_kwrap_param {

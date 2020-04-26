@@ -401,6 +401,9 @@ TEE_Result TEE_Crypto_Run(char *alg, uint8_t *srcaddr, uint32_t datalen,
 TEE_Result TEE_Crypto_Set_Key_IV(uint32_t threadidx, uint32_t *in,
 		uint32_t len, uint8_t swap, uint32_t from_kl, uint32_t dest_idx);
 
+TEE_Result TEE_CipherEncrypt_With_Kwrap(const uint8_t *iv, uint32_t iv_len,
+		const uint8_t *src, uint32_t src_len, uint8_t *dst, uint32_t *dst_len);
+
 TEE_Result TEE_CipherDecrypt_With_Kwrap(const uint8_t *iv, uint32_t iv_len,
 		const uint8_t *src, uint32_t src_len, uint8_t *dst, uint32_t *dst_len);
 

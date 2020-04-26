@@ -1,5 +1,5 @@
 # auto-generated TEE configuration file
-# TEE version ATOS-V2.4.4-92-g0c867e2e
+# TEE version ATOS-V2.4.4-95-g711dba9b
 ARCH=arm
 PLATFORM=meson
 PLATFORM_FLAVOR=c1
