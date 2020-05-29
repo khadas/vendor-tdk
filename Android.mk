@@ -1,3 +1,4 @@
+ifneq ($(PLATFORM_TDK_VERSION), 38)
 TDK_TOP_DIR := $(call my-dir)
 TA_SIGN_TOOL := $(TDK_TOP_DIR)/ta_export/scripts/sign_ta.py
 TA_GEN_CERT_TOOL := $(TDK_TOP_DIR)/ta_export/scripts/gen_cert_key.py
@@ -9,3 +10,4 @@ TA_USER_AES_KEY ?= $(TDK_TOP_DIR)/ta_export/keys/ta_aes_key.bin
 TA_USER_AES_IV ?= $(TDK_TOP_DIR)/ta_export/keys/ta_aes_iv.bin
 
 include $(call all-subdir-makefiles)
+endif

@@ -89,13 +89,13 @@ def main():
 			"root_rsa_prv_key.pem"])
 	gen_cert_cmd.extend(["--ta_rsa_key=" + args.keydir + \
 			"ta_rsa_pub_key.pem"])
-	gen_cert_cmd.extend(["--ta_rsa_key_sig=" + target_path + "/cert.sig"])
+	gen_cert_cmd.extend(["--ta_rsa_key_sig=" + target_path + "/" + uuid + ".sig"])
 	gen_cert_cmd.extend(["--root_aes_key=" + args.keydir + \
 			"root_aes_key.bin"])
 	gen_cert_cmd.extend(["--ta_aes_key=" + args.keydir + "ta_aes_key.bin"])
 	gen_cert_cmd.extend(["--ta_aes_iv=" + args.keydir + "ta_aes_iv.bin"])
 	gen_cert_cmd.extend(["--ta_aes_key_iv_enc=" + target_path + \
-			"/ta_aes_key_enc.bin"])
+			"/" + uuid + ".key"])
 	sub = subprocess.Popen(gen_cert_cmd)
 	sub.communicate()
 
@@ -104,19 +104,19 @@ def main():
 	sign_cmd.extend(["--ta_marketid=" + str(args.market_id)])
 	sign_cmd.extend(["--chipset_id=" + str(args.chipset_id)])
 	sign_cmd.extend(["--ta_rsa_key=" + args.keydir + "ta_rsa_prv_key.pem"])
-	sign_cmd.extend(["--ta_rsa_key_sig=" + target_path + "/cert.sig"])
+	sign_cmd.extend(["--ta_rsa_key_sig=" + target_path + "/" + uuid + ".sig"])
 	if args.encrypt != 0:
 		sign_cmd.extend(["--ta_aes_key=" + args.keydir + "ta_aes_key.bin"])
 		sign_cmd.extend(["--ta_aes_iv=" + args.keydir + "ta_aes_iv.bin"])
 		sign_cmd.extend(["--ta_aes_key_iv_enc=" + target_path + \
-				"/ta_aes_key_enc.bin"])
+				"/" + uuid + ".key"])
 	sign_cmd.extend(["--in=" + args.inf_unsigned_ta])
 	sign_cmd.extend(["--out=" + args.outf_signed_ta])
 	sub = subprocess.Popen(sign_cmd)
 	sub.communicate()
 
-	os.remove(target_path + "/cert.sig")
-	os.remove(target_path + "/ta_aes_key_enc.bin")
+	os.remove(target_path + "/" + uuid + ".sig")
+	os.remove(target_path + "/" + uuid + ".key")
 
 if __name__ == "__main__":
 	main()
