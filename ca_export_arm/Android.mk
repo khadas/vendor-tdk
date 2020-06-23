@@ -8,7 +8,7 @@ LOCAL_SRC_FILES := ../ca_export_arm64/bin_android/tee-supplicant
 endif
 LOCAL_MODULE := tee-supplicant
 LOCAL_MODULE_CLASS := EXECUTABLES
-LOCAL_SHARED_LIBRARIES := libteec
+LOCAL_SHARED_LIBRARIES := libteec libcutils
 
 LOCAL_INIT_RC := bin_android/tee-supplicant.rc
 
