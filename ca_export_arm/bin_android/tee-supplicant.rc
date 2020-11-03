@@ -5,7 +5,6 @@ on early-init
 on init
 	chmod 666 /dev/tee0
 	chmod 666 /dev/teepriv0
-	mkdir /mnt/vendor/tee 0700 system system
 	start tee_supplicant
 
 on post-fs
