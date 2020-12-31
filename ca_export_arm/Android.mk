@@ -18,6 +18,23 @@ endif
 
 include $(BUILD_PREBUILT)
 
+ifneq ($(filter userdebug eng,$(TARGET_BUILD_VARIANT)),)
+include $(CLEAR_VARS)
+ifeq ($(TARGET_ARCH),arm)
+LOCAL_SRC_FILES := bin_android/tee_stest
+else
+LOCAL_SRC_FILES := ../ca_export_arm64/bin_android/tee_stest
+endif
+LOCAL_MODULE := tee_stest
+LOCAL_MODULE_CLASS := EXECUTABLES
+LOCAL_SHARED_LIBRARIES := libteec
+
+ifeq ($(shell test $(PLATFORM_SDK_VERSION) -ge 26 && echo OK),OK)
+LOCAL_PROPRIETARY_MODULE := true
+endif
+
+include $(BUILD_PREBUILT)
+endif
 
 include $(CLEAR_VARS)
 LOCAL_SRC_FILES_32 := lib_android/libteec.so
