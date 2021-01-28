@@ -85,6 +85,7 @@
 #define CFG_KEYMASTER3 1
 #define CFG_KL_ADAPTER_V2 1
 #define CFG_LIBUTILS_WITH_ISOC 1
+#define CFG_LOG_SHMEM_SIZE 0x00040000
 #define CFG_LPAE_ADDR_SPACE_SIZE (1ull << 32)
 #define CFG_LTC_OPTEE_THREAD 1
 /* CFG_MARKETID_TA is not set */
@@ -111,7 +112,7 @@
 /* CFG_RPMB_FS_FORMAT is not set */
 /* CFG_RPMB_TEST is not set */
 /* CFG_RPMB_WRITE_KEY is not set */
-#define CFG_RSV_MEM_SIZE 0x02000000
+#define CFG_RSV_MEM_SIZE 0x01800000
 /* CFG_RW_REG_API is not set */
 /* CFG_SECURE_DATA_PATH is not set */
 #define CFG_SECURE_STORAGE 1
@@ -151,7 +152,7 @@
 #define CFG_TZDRAM_BASE 0x05300000
 /* CFG_ULIBS_GPROF is not set */
 #define CFG_UNIFY_KEY 1
-#define CFG_VDEC_RAM_SIZE 0x1000000
+#define CFG_VDEC_RAM_SIZE 0x0800000
 #define CFG_VIDEO_FW_LOAD 1
 #define CFG_VIDEO_FW_RAM_SIZE 0x100000
 /* CFG_VMX_2017_240_COMPAT is not set */
