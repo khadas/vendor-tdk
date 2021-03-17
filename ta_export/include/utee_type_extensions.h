@@ -121,6 +121,7 @@
 #define TEE_EXTEND_ASYMM_PUBKEY_DECRYPT                 91
 #define TEE_EXTEND_VDEC_MMAP_CACHED                     92
 #define TEE_EXTEND_CIPHER_ENCRYPT_WITH_KWRAP            93
+#define TEE_EXTEND_STORAGE_SYNC                         94
 
 
 // For CFG_VMX_240_COMPAT:

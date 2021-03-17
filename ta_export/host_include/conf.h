@@ -108,6 +108,7 @@
 /* CFG_RNG_API is not set */
 #define CFG_RNG_POOL_WAIT_FILLED 1
 #define CFG_RPMB_DRIVER 1
+#define CFG_RPMB_FS 1
 #define CFG_RPMB_FS_DEV_ID 0
 /* CFG_RPMB_FS_FORMAT is not set */
 /* CFG_RPMB_TEST is not set */
@@ -121,6 +122,7 @@
 /* CFG_SHM_MMAP_API is not set */
 #define CFG_SMALL_PAGE_USER_TA 1
 /* CFG_SQL_FS is not set */
+#define CFG_S_STORAGE 1
 #define CFG_TA_BIGNUM_MAX_BITS 2048
 #define CFG_TA_FLOAT_SUPPORT 1
 /* CFG_TA_GPROF_SUPPORT is not set */
