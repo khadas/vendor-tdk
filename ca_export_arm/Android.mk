@@ -7,6 +7,9 @@ else
 LOCAL_SRC_FILES := ../ca_export_arm64/bin_android/tee-supplicant
 endif
 LOCAL_MODULE := tee-supplicant
+LOCAL_LICENSE_KINDS := SPDX-license-identifier-BSD
+LOCAL_LICENSE_CONDITIONS := notice
+LOCAL_NOTICE_FILE := $(LOCAL_PATH)/../LICENSE
 LOCAL_MODULE_CLASS := EXECUTABLES
 LOCAL_SHARED_LIBRARIES := libteec libcutils
 
@@ -26,6 +29,9 @@ else
 LOCAL_SRC_FILES := ../ca_export_arm64/bin_android/tee_stest
 endif
 LOCAL_MODULE := tee_stest
+LOCAL_LICENSE_KINDS := SPDX-license-identifier-BSD
+LOCAL_LICENSE_CONDITIONS := notice
+LOCAL_NOTICE_FILE := $(LOCAL_PATH)/../LICENSE
 LOCAL_MODULE_CLASS := EXECUTABLES
 LOCAL_SHARED_LIBRARIES := libteec
 
@@ -40,6 +46,9 @@ include $(CLEAR_VARS)
 LOCAL_SRC_FILES_32 := lib_android/libteec.so
 LOCAL_SRC_FILES_64 := ../ca_export_arm64/lib_android/libteec.so
 LOCAL_MODULE := libteec
+LOCAL_LICENSE_KINDS := SPDX-license-identifier-BSD
+LOCAL_LICENSE_CONDITIONS := notice
+LOCAL_NOTICE_FILE := $(LOCAL_PATH)/../LICENSE
 LOCAL_MULTILIB := both
 LOCAL_MODULE_SUFFIX := .so
 LOCAL_MODULE_CLASS := SHARED_LIBRARIES
@@ -53,6 +62,9 @@ include $(CLEAR_VARS)
 LOCAL_SRC_FILES_32 := lib_android/libteec_sys.so
 LOCAL_SRC_FILES_64 := ../ca_export_arm64/lib_android/libteec_sys.so
 LOCAL_MODULE := libteec_sys
+LOCAL_LICENSE_KINDS := SPDX-license-identifier-BSD
+LOCAL_LICENSE_CONDITIONS := notice
+LOCAL_NOTICE_FILE := $(LOCAL_PATH)/../LICENSE
 LOCAL_MULTILIB := both
 LOCAL_MODULE_SUFFIX := .so
 LOCAL_MODULE_CLASS := SHARED_LIBRARIES
@@ -63,6 +75,9 @@ ifneq ($(filter userdebug eng,$(TARGET_BUILD_VARIANT)),)
 include $(CLEAR_VARS)
 LOCAL_SRC_FILES := scripts/tdk_auto_test.sh
 LOCAL_MODULE := tdk_auto_test
+LOCAL_LICENSE_KINDS := SPDX-license-identifier-BSD
+LOCAL_LICENSE_CONDITIONS := notice
+LOCAL_NOTICE_FILE := $(LOCAL_PATH)/../LICENSE
 LOCAL_MODULE_SUFFIX := .sh
 LOCAL_MODULE_CLASS := EXECUTABLES
 

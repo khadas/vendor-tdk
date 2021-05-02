@@ -21,6 +21,9 @@ endif
 include $(CLEAR_VARS)
 local_module_path ?= $(TARGET_OUT)/lib/optee_armtz
 LOCAL_MODULE := $(local_module)
+LOCAL_LICENSE_KINDS := SPDX-license-identifier-Apache-2.0 SPDX-license-identifier-BSD SPDX-license-identifier-FTL SPDX-license-identifier-GPL SPDX-license-identifier-LGPL-2.1 SPDX-license-identifier-MIT SPDX-license-identifier-Zlib legacy_by_exception_only legacy_notice legacy_unencumbered
+LOCAL_LICENSE_CONDITIONS := by_exception_only notice restricted unencumbered
+LOCAL_NOTICE_FILE := $(LOCAL_PATH)/LICENSE
 LOCAL_PREBUILT_MODULE_FILE := $(OPTEE_TA_OUT_DIR)/$(LOCAL_MODULE)
 LOCAL_MODULE_PATH := $(local_module_path)
 LOCAL_MODULE_CLASS := EXECUTABLES
@@ -57,6 +60,9 @@ include $(BUILD_PREBUILT)
 
 include $(CLEAR_VARS)
 LOCAL_MODULE := $(local_module_ta_name)
+LOCAL_LICENSE_KINDS := SPDX-license-identifier-Apache-2.0 SPDX-license-identifier-BSD SPDX-license-identifier-FTL SPDX-license-identifier-GPL SPDX-license-identifier-LGPL-2.1 SPDX-license-identifier-MIT SPDX-license-identifier-Zlib legacy_by_exception_only legacy_notice legacy_unencumbered
+LOCAL_LICENSE_CONDITIONS := by_exception_only notice restricted unencumbered
+LOCAL_NOTICE_FILE := $(LOCAL_PATH)/LICENSE
 LOCAL_MODULE_TAGS := optional
 LOCAL_MODULE_CLASS := SHARED_LIBRARIES
 
