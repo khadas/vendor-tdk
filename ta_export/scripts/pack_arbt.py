@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 #
 # Copyright (C) 2016 Amlogic, Inc. All rights reserved.
 #
@@ -26,7 +26,7 @@ def ta_antirollback_table_check(infile):
 		f = open(infile, 'r')
 		lines = f.readlines()
 	except:
-		print "Open File: %s fail!" %(infile)
+		print ("Open File: %s fail!" %(infile))
 		return False
 	else:
 		f.close
@@ -40,12 +40,12 @@ def ta_antirollback_table_check(infile):
 		try:
 			ta_uuid = uuid.UUID(uuid_str)
 		except:
-			print "Bad format UUID!"
+			print ("Bad format UUID!")
 			return False
 		else:
 			if ta_uuid in tmp:
-				print "Dumplicate UUID: ",
-				print ta_uuid
+				print ("Dumplicate UUID: ",)
+				print (ta_uuid)
 				return False
 			tmp.append(ta_uuid)
 
@@ -62,7 +62,7 @@ def ta_antirollback_table_parser(infile, outfile):
 		f = open(infile, 'r')
 		lines = f.readlines()
 	except:
-		print "Open File: %s fail!" %(infile)
+		print ("Open File: %s fail!" %(infile))
 		return 0
 	else:
 		f.close
@@ -70,7 +70,7 @@ def ta_antirollback_table_parser(infile, outfile):
 	try:
 		f = open(outfile, 'wb+')
 	except:
-		print "Open File: %s fail!" %(outfile)
+		print ("Open File: %s fail!" %(outfile))
 		return 0
 
 	for line in lines:
@@ -82,7 +82,7 @@ def ta_antirollback_table_parser(infile, outfile):
 		try:
 			ta_uuid = uuid.UUID(uuid_str)
 		except:
-			print "Bad format UUID!"
+			print ("Bad format UUID!")
 			return 0
 		else:
 			ta_uuid_hex = binascii.hexlify(ta_uuid.bytes_le)
@@ -97,7 +97,7 @@ def ta_antirollback_table_parser(infile, outfile):
 			sublevel = int(ta_ver_str.split('.')[2])
 			assert sublevel<256
 		except:
-			print "Bad format version!"
+			print ("Bad format version!")
 			return 0
 		else:
 			ta_ver = struct.pack('<I', version<<16|patchlevel<<8|sublevel)
@@ -122,21 +122,21 @@ def main():
 		args.out = args.inf
 
 	if not ta_antirollback_table_check(args.arb_table):
-		print "BAD TA antirollback table format!"
+		print ("BAD TA antirollback table format!")
 		return -1
 
 	count = ta_antirollback_table_parser(args.arb_table, tmpfile)
 	if not count:
 		exit(-1)
 	if count > arb_table_length_max:
-		print "TA antirollback table size exceed(max is %d)!" %(arb_table_length_max)
+		print ("TA antirollback table size exceed(max is %d)!" %(arb_table_length_max))
 		exit(-2)
 
 	try:
 		f = open(tmpfile, 'rb+')
 		arb = f.read()
 	except:
-		print "Open File: %s fail!" %(tmpfile)
+		print ("Open File: %s fail!" %(tmpfile))
 		exit(-3)
 	else:
 		f.close
@@ -150,7 +150,7 @@ def main():
 		inf = open(args.inf, 'rb+')
 		raw = inf.read()
 	except:
-		print "Open File: %s fail!" %(args.inf)
+		print ("Open File: %s fail!" %(args.inf))
 		exit(-4)
 	else:
 		inf.close()
@@ -158,7 +158,7 @@ def main():
 	try:
 		offset = raw.index("TAT@")
 	except:
-		print "Bad format of %s, pack fail" %(args.inf)
+		print ("Bad format of %s, pack fail" %(args.inf))
 		exit(-5)
 
 	try:
@@ -168,14 +168,14 @@ def main():
 		outf.write(hdr)
 		outf.write(arb)
 	except:
-		print "Open File: %s fail!" %(args.outf)
+		print ("Open File: %s fail!" %(args.outf))
 	else:
 		outf.close()
 
-	print 'Packing TA antirollback table...'
-	print '    Input:   arb_table.name = ' + args.arb_table
-	print '    Input:       image.name = ' + args.inf
-	print '    Output:      image.name = ' + args.out
+	print ('Packing TA antirollback table...')
+	print ('    Input:   arb_table.name = ' + args.arb_table)
+	print ('    Input:       image.name = ' + args.inf)
+	print ('    Output:      image.name = ' + args.out)
 
 if __name__ == "__main__":
 	main()
