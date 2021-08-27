@@ -62,6 +62,7 @@ include $(CLEAR_VARS)
 LOCAL_SRC_FILES_32 := lib_android/libteec_sys.so
 LOCAL_SRC_FILES_64 := ../ca_export_arm64/lib_android/libteec_sys.so
 LOCAL_MODULE := libteec_sys
+LOCAL_SYSTEM_EXT_MODULE := true
 LOCAL_LICENSE_KINDS := SPDX-license-identifier-BSD
 LOCAL_LICENSE_CONDITIONS := notice
 LOCAL_NOTICE_FILE := $(LOCAL_PATH)/../LICENSE
