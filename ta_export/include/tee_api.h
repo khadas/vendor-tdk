@@ -407,6 +407,28 @@ TEE_Result TEE_CipherEncrypt_With_Kwrap(const uint8_t *iv, uint32_t iv_len,
 TEE_Result TEE_CipherDecrypt_With_Kwrap(const uint8_t *iv, uint32_t iv_len,
 		const uint8_t *src, uint32_t src_len, uint8_t *dst, uint32_t *dst_len);
 
+/*
+ * Desc: Get pfpk_enc which use to encrypt Provision key
+ *
+ * Input / Output:
+ * pfpk_enc: pfpk_enc buffer / pfpk_enc
+ * size: buffer size / pfpk_enc size
+ *
+ * Return: TEE_SUCCESS if suceess
+ */
+TEE_Result TEE_Provision_Get_PFPK_ENC(uint8_t *pfpk_enc, uint32_t *size);
+
+/*
+ * Desc: Get pfpk_hmac which use to derive DAC(Device Authentication Code)
+ *
+ * Input / Output:
+ * pfpk_hmac: pfpk_hmac buffer / pfpk_hmac
+ * size: buffer size / pfpk_hmac size
+ *
+ * Return: TEE_SUCCESS if suceess
+ */
+TEE_Result TEE_Provision_Get_PFPK_HMAC(uint8_t *pfpk_hmac, uint32_t *size);
+
 /* Date & Time API */
 
 void TEE_GetSystemTime(TEE_Time *time);
