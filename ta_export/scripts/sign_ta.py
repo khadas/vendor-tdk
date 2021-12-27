@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 #
 # Copyright (C) 2016 Amlogic, Inc. All rights reserved.
 #
@@ -97,17 +97,17 @@ class ta_cert_hdr():
 class ta_cert():
 	def __init__(self, market_id, chipset_id):
 		self.__cert_hdr = ta_cert_hdr(market_id, chipset_id)
-		self.__ta_pub_key = b''  # 256bytes ta rsa pub key
+		self.__ta_pub_key = ''  # 256bytes ta rsa pub key
 
 		# 256bytes sig of cert header and ta pub key by root prv key
-		self.__cert_sig = b''
+		self.__cert_sig = ''
 
-		self.__ta_sig = b''      # 256bytes sig of ta by ta prv key
+		self.__ta_sig = ''      # 256bytes sig of ta by ta prv key
 
 	def update_attrs(self, ta_pub_key, cert_sig, ta_sig, uuid):
 		import struct
 		import array
-		from Cryptodome.Util.number import long_to_bytes
+		from Crypto.Util.number import long_to_bytes
 
 		for x in array.array("B", long_to_bytes(ta_pub_key.n)):
 			self.__ta_pub_key += struct.pack("B", x)
@@ -140,11 +140,11 @@ class signed_ta_hdr():
 			self.__ta_cert.serialize()
 
 def aes256_cbc_enc(key, iv, src_data):
-	from Cryptodome.Cipher import AES
+	from Crypto.Cipher import AES
 
 	to_enc_data = src_data
 	if (len(src_data) % 16) != 0:
-		to_enc_data = src_data + b'0' * (16 - (len(src_data) % 16))
+		to_enc_data = src_data + '0' * (16 - (len(src_data) % 16))
 
 	return AES.new(key, AES.MODE_CBC, iv).encrypt(to_enc_data)
 
@@ -164,9 +164,9 @@ def is_signed_ta(ta):
 def main():
 	import sys
 	import struct
-	from Cryptodome.Signature import PKCS1_v1_5
-	from Cryptodome.Hash import SHA256
-	from Cryptodome.PublicKey import RSA
+	from Crypto.Signature import PKCS1_v1_5
+	from Crypto.Hash import SHA256
+	from Crypto.PublicKey import RSA
 
 	args = get_args()
 

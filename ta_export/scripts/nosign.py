@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python
 #
 # Copyright (C) 2016 Amlogic, Inc. All rights reserved.
 #
@@ -46,7 +46,7 @@ class ta_hdr():
 
 class unsigned_ta_hdr():
 	def __init__(self, payload):
-		from Cryptodome.Hash import SHA256
+		from Crypto.Hash import SHA256
 
 		self.__ta_hdr = ta_hdr(payload)
 

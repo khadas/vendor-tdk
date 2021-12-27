@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 #
 # Copyright (C) 2016 Amlogic, Inc. All rights reserved.
 #
@@ -23,7 +23,7 @@ def get_args():
 
 def main():
 	import array
-	from Cryptodome.PublicKey import RSA
+	from Crypto.PublicKey import RSA
 
 	args = get_args();
 	infile = args.inf
@@ -32,16 +32,16 @@ def main():
 	inf = open(infile, 'r')
 	key = RSA.importKey(inf.read())
 	inf.close()
-	keysize = key.size_in_bits()
+	keysize = key.size() + 1
 
-	outf = open(outfile, 'wb')
+	print 'Generating RSA public key from private key ...'
+	print '    Input:   rsa_prv_key.name = ' + infile
+	print '             rsa_prv_key.size = {}'.format(keysize)
+	print '    Output:  rsa_pub_key.name = ' + outfile
+
+	outf = open(outfile, 'w')
 	outf.write(key.publickey().exportKey('PEM'))
 	outf.close()
-
-	print ('Generating RSA public key from private key ...')
-	print ('    Input:   rsa_prv_key.name = ' + infile)
-	print ('             rsa_prv_key.size = {}'.format(keysize))
-	print ('    Output:  rsa_pub_key.name = ' + outfile)
 
 if __name__ == "__main__":
 	main()
