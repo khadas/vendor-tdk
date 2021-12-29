@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 #
 # Copyright (C) 2016 Amlogic, Inc. All rights reserved.
 #
@@ -58,7 +58,7 @@ class ta_cert_hdr():
 						self.__chipset_id, *self.__rsv)
 
 def aes256_cbc_enc(key, iv, src_data):
-	from Crypto.Cipher import AES
+	from Cryptodome.Cipher import AES
 
 	to_enc_data = src_data
 	if (len(src_data) % 16) != 0:
@@ -80,10 +80,10 @@ def main():
 	import struct
 	import array
 	import uuid
-	from Crypto.Signature import PKCS1_v1_5
-	from Crypto.Hash import SHA256
-	from Crypto.PublicKey import RSA
-	from Crypto.Util.number import long_to_bytes
+	from Cryptodome.Signature import PKCS1_v1_5
+	from Cryptodome.Hash import SHA256
+	from Cryptodome.PublicKey import RSA
+	from Cryptodome.Util.number import long_to_bytes
 
 	args = get_args()
 
@@ -143,10 +143,10 @@ def main():
 	print ('                         chipset_id = ' + str(args.chipset_id))
 	print ('                  root_prv_key.name = ' + args.root_prv_key)
 	print ('                  root_prv_key.size = {}'.\
-		format(root_prv_key.size() + 1))
+		format(root_prv_key.size_in_bits()))
 	print ('                    ta_pub_key.name = ' + args.ta_pub_key)
 	print ('                    ta_pub_key.size = {}'.\
-		format(ta_pub_key.size() + 1))
+		format(ta_pub_key.size_in_bits()))
 	print ('                  root_aes_key.name = ' + args.root_aes_key)
 	print ('                    ta_aes_key.name = ' + args.ta_aes_key)
 	print ('                    ta_aes_iv.name  = ' + args.ta_aes_iv)

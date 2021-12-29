@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 #
 # Copyright (C) 2016 Amlogic, Inc. All rights reserved.
 #
@@ -42,7 +42,7 @@ def calc_rsk_pos(key_base, key_idx):
 	if key_idx == 0:
 		rsk_pos = key_base + key_hdr_size + key_item_size * key_idx * 2
 	else:
-		print 'calc_rsk_pos parameter error'
+		print ('calc_rsk_pos parameter error')
 		sys.exit(0)
 	return rsk_pos
 
@@ -54,7 +54,7 @@ def calc_rek_pos(key_base, key_idx):
 	elif key_idx == 1:
 		rek_pos = key_base + key_hdr_size + key_item_size * key_idx * 2
 	else:
-		print 'calc_rek_pos parameter error'
+		print ('calc_rek_pos parameter error')
 		sys.exit(0)
 	return rek_pos
 
@@ -76,7 +76,7 @@ def add_key_cnt(outf_os):
 def insert_rsk(outf_os, rsk, rsk_pos, key_type):
 	import struct
 	import array
-	from Crypto.Util.number import long_to_bytes
+	from Cryptodome.Util.number import long_to_bytes
 
 	outf_os.seek(rsk_pos)
 	rsk_type = struct.unpack('<I', outf_os.read(4))[0]
@@ -84,7 +84,7 @@ def insert_rsk(outf_os, rsk, rsk_pos, key_type):
 		add_key_cnt(outf_os)
 
 	rsk_type = key_type
-	rsk_size = (rsk.size() + 1) / 8
+	rsk_size = (rsk.size_in_bits() - 1) // 8 + 1
 	rsk_hdr = struct.pack('<II', rsk_type, rsk_size)
 
 	outf_os.seek(rsk_pos)
@@ -109,7 +109,7 @@ def insert_rek(outf_os, rek, rek_pos, key_type):
 	outf_os.write(rek)
 
 def read_rsk(inf_rsk):
-	from Crypto.PublicKey import RSA
+	from Cryptodome.PublicKey import RSA
 
 	f = open(inf_rsk, 'rb+')
 	rsk = RSA.importKey(f.read())
@@ -129,22 +129,22 @@ def get_raw_os(inf_os):
 	return raw_os
 
 def print_hint(args):
-	print 'Packing root key ...'
-	print '    Input:'
+	print ('Packing root key ...')
+	print ('    Input:')
 	if args.inf_rsk != 'null':
-		rsk_size = (read_rsk(args.inf_rsk).size() + 1) / 8 * 8
-		print '               rsk.name = ' + args.inf_rsk
-		print '               rsk.size = {}'.format(rsk_size)
+		rsk_size = read_rsk(args.inf_rsk).size_in_bits()
+		print ('               rsk.name = ' + args.inf_rsk)
+		print ('               rsk.size = {}'.format(rsk_size))
 	if args.inf_rek != 'null':
 		rek_size = len(read_rek(args.inf_rek))
-		print '               rek.name = ' + args.inf_rek
-		print '               rek.size = ' + str(rek_size)
+		print ('               rek.name = ' + args.inf_rek)
+		print ('               rek.size = ' + str(rek_size))
 	if args.provision_rek != 'null':
 		pro_rek_size = len(read_rek(args.provision_rek))
-		print '     provision_rek.name = ' + args.provision_rek
-		print '     provision_rek.size = ' + str(pro_rek_size)
-	print '             image.name = ' + args.inf_os
-	print '    Output:  image.name = ' + args.outf_os
+		print ('     provision_rek.name = ' + args.provision_rek)
+		print ('     provision_rek.size = ' + str(pro_rek_size))
+	print ('             image.name = ' + args.inf_os)
+	print ('    Output:  image.name = ' + args.outf_os)
 
 def main():
 	args = get_args()
