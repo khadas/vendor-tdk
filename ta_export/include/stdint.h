@@ -25,6 +25,8 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
+#include <limits.h>
+
 /*
  * This file provides what C99 standard requires in
  * 7.18 interger types <stdint.h>

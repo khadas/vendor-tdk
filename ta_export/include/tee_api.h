@@ -766,6 +766,11 @@ TEE_Result TEE_SyncPersistentObject(void);
 TEE_Result TEE_Km_Get_Boot_Params(uint32_t *locked, uint32_t *boot_state,
 		uint8_t *boot_key, uint32_t *boot_key_len,
 		uint8_t *boot_hash, uint32_t *boot_hash_len);
+TEE_Result TEE_Km_Get_Boot_Patchlevel(uint32_t *device_locked,
+		uint32_t *boot_patchlevel,
+		uint32_t *verified_boot_state,
+		uint8_t *boot_key, uint32_t *boot_key_len,
+		uint8_t *boot_hash, uint32_t *boot_hash_len);
 
 #define TEE_SECURE_TIMER_FLAG_ONESHOT   0
 #define TEE_SECURE_TIMER_FLAG_PERIOD    1

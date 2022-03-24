@@ -17,7 +17,7 @@ objs		:=
 .SUFFIXES:
 
 comp-cflags$(sm) = -std=gnu99
-comp-cxxflags$(sm) = -std=c++11 -fno-exceptions -Wno-psabi -fno-rtti
+comp-cxxflags$(sm) = -fno-exceptions -Wno-psabi -fno-rtti
 comp-aflags$(sm) =
 comp-cppflags$(sm) =
 

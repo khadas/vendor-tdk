@@ -122,6 +122,7 @@
 #define TEE_EXTEND_VDEC_MMAP_CACHED                     92
 #define TEE_EXTEND_CIPHER_ENCRYPT_WITH_KWRAP            93
 #define TEE_EXTEND_STORAGE_SYNC                         94
+#define TEE_EXTEND_KM_GET_BOOT_PATCHLEVEL               95
 
 
 // For CFG_VMX_240_COMPAT:
@@ -586,6 +587,14 @@ struct tee_km_boot_params{
 	uint32_t verified_boot_state;
 	uint8_t verified_boot_key[SHA256_DIGEST_SIZE];
 	uint8_t verified_boot_hash[SHA256_DIGEST_SIZE];
+};
+
+struct tee_km_boot_params_patchlevel{
+	uint32_t device_locked;
+	uint32_t verified_boot_state;
+	uint8_t verified_boot_key[SHA256_DIGEST_SIZE];
+	uint8_t verified_boot_hash[SHA256_DIGEST_SIZE];
+	uint32_t boot_patchlevel;
 };
 
 struct tee_read_rng_pool_param {
