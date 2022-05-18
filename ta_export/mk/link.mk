@@ -18,6 +18,7 @@ link-ldflags  = $(LDFLAGS)
 link-ldflags += -pie
 link-ldflags += -T $(link-script-pp) -Map=$(link-out-dir)/$(binary).map
 link-ldflags += --sort-section=alignment
+link-ldflags += --gc-sections
 
 # Macro to reverse a list
 reverse = $(if $(wordlist 2,2,$(1)),$(call reverse,$(wordlist 2,$(words $(1)),$(1))) $(firstword $(1)),$(1))
