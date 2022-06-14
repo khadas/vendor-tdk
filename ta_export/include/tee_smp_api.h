@@ -27,6 +27,7 @@
 
 #include <tee_internal_api.h>
 #include <tee_internal_api_extensions.h>
+#include <utee_type_extensions.h>
 
 
 typedef void*       TEE_SMP_session_t;
@@ -98,6 +99,7 @@ TEE_Result TEE_SMP_OpaqueHandleRelease(uint32_t handle);
 void       TEE_SMP_OpaqueHandleUnmap(void);
 TEE_Result TEE_SMP_GetVersion(uint32_t param_types, TEE_Param params[4]);
 void       TEE_SMP_Finalize(void);
+TEE_Result TEE_SMP_CheckCur(uint32_t handle, void *data, uint32_t dsize);
 #ifdef __cplusplus
 }
 #endif
