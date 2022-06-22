@@ -123,6 +123,8 @@
 #define TEE_EXTEND_CIPHER_ENCRYPT_WITH_KWRAP            93
 #define TEE_EXTEND_STORAGE_SYNC                         94
 #define TEE_EXTEND_KM_GET_BOOT_PATCHLEVEL               95
+#define TEE_EXTEND_PROVISION_GET_PFPK_ENC               96
+#define TEE_EXTEND_PROVISION_GET_PFPK_HMAC              97
 
 
 // For CFG_VMX_240_COMPAT:
@@ -579,6 +581,16 @@ struct tee_cipher_decrypt_with_kwrap_param {
 	uint32_t src_len;
 	uint8_t *dst;
 	uint32_t *dst_len;
+};
+
+struct tee_provision_get_pfpk_enc_param {
+	uint8_t *pfpk_enc;
+	uint32_t *size;
+};
+
+struct tee_provision_get_pfpk_hmac_param {
+	uint8_t *pfpk_hmac;
+	uint32_t *size;
 };
 
 #define SHA256_DIGEST_SIZE 32

@@ -5,6 +5,7 @@
 #define CFG_ANTIROLLBACK_TA_SW 1
 #define CFG_ARM32_core 1
 #define CFG_ARM32_ta_arm32 1
+/* CFG_ARM64_core is not set */
 #define CFG_ATOS_IMPL_VERSION 0x20404
 /* CFG_AV_CONTROL is not set */
 /* CFG_BOOT_SECONDARY_REQUEST is not set */
@@ -65,8 +66,9 @@
 /* CFG_DT is not set */
 #define CFG_DTB_MAX_SIZE 0x10000
 #define CFG_EFUSE 1
-#define CFG_EFUSE_LAYOUT 1
+/* CFG_EFUSE_LAYOUT is not set */
 #define CFG_EFUSE_READ_ALL_WRITE_BLOCK 1
+#define CFG_EFUSE_TEE_MODE 1
 #define CFG_ENCRYPT_TA 1
 #define CFG_ENC_FS 1
 #define CFG_ENC_FS_ALG_AES_CTR_AND_HMAC 1
@@ -107,12 +109,11 @@
 /* CFG_RNG_API is not set */
 #define CFG_RNG_POOL_WAIT_FILLED 1
 #define CFG_RPMB_DRIVER 1
-#define CFG_RPMB_FS 1
 #define CFG_RPMB_FS_DEV_ID 0
 /* CFG_RPMB_FS_FORMAT is not set */
 /* CFG_RPMB_TEST is not set */
 /* CFG_RPMB_WRITE_KEY is not set */
-#define CFG_RSV_MEM_SIZE 0x02000000
+#define CFG_RSV_MEM_SIZE 0x01800000
 /* CFG_RW_REG_API is not set */
 /* CFG_SECURE_DATA_PATH is not set */
 #define CFG_SECURE_STORAGE 1
@@ -153,7 +154,7 @@
 #define CFG_TZDRAM_BASE 0x05300000
 /* CFG_ULIBS_GPROF is not set */
 #define CFG_UNIFY_KEY 1
-#define CFG_VDEC_RAM_SIZE 0x1000000
+#define CFG_VDEC_RAM_SIZE 0x0400000
 #define CFG_VIDEO_FW_LOAD 1
 #define CFG_VIDEO_FW_RAM_SIZE 0x100000
 /* CFG_VMX_2017_240_COMPAT is not set */
@@ -161,7 +162,6 @@
 /* CFG_VMX_TA is not set */
 #define CFG_VP9_PROB_PROCESS 1
 #define CFG_VP9_PROB_RAM_SIZE 0x100000
-#define CFG_WATERMARK_NEXGUARD 1
 #define CFG_WITH_ARM_TRUSTED_FW 1
 #define CFG_WITH_DEBUG 1
 /* CFG_WITH_PAGER is not set */
@@ -171,8 +171,8 @@
 #define CFG_WITH_STEST 1
 #define CFG_WITH_USER_TA 1
 #define CFG_WITH_VFP 1
-#define PLATFORM_FLAVOR g12a
-#define PLATFORM_FLAVOR_g12a 1
+#define PLATFORM_FLAVOR t5
+#define PLATFORM_FLAVOR_t5 1
 #define PLATFORM_meson 1
 #define _CFG_CRYPTO_WITH_ACIPHER 1
 #define _CFG_CRYPTO_WITH_ASN1 1
