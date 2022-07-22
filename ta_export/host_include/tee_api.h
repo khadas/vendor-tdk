@@ -429,6 +429,29 @@ TEE_Result TEE_Provision_Get_PFPK_ENC(uint8_t *pfpk_enc, uint32_t *size);
  */
 TEE_Result TEE_Provision_Get_PFPK_HMAC(uint8_t *pfpk_hmac, uint32_t *size);
 
+/*
+ * Desc: Get pfpk_enc from pcpk which use to encrypt Provision key
+ *
+ * Input / Output:
+ * pfpk_enc: pfpk_enc buffer / pfpk_enc
+ * size: buffer size / pfpk_enc size
+ *
+ * Return: TEE_SUCCESS if suceess
+ */
+TEE_Result TEE_Provision_Get_PFPK_ENC_From_PCPK(uint8_t *pfpk_enc, uint32_t *size);
+
+/*
+ * Desc: Get pfpk_hmac from pcpk which use to derive DAC(Device Authentication Code)
+ *
+ * Input / Output:
+ * pfpk_hmac: pfpk_hmac buffer / pfpk_hmac
+ * size: buffer size / pfpk_hmac size
+ *
+ * Return: TEE_SUCCESS if suceess
+ */
+TEE_Result TEE_Provision_Get_PFPK_HMAC_From_PCPK(uint8_t *pfpk_hmac, uint32_t *size);
+
+
 /* Date & Time API */
 
 void TEE_GetSystemTime(TEE_Time *time);
