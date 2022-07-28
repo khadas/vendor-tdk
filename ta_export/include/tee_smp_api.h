@@ -76,6 +76,11 @@ enum {
     SECMEM_CAS_ERROR_ALLOC_HANDLE,
 };
 
+enum {
+    TEE_SMP_PROP_MEM_LEVEL               = 0x1000,
+    TEE_SMP_PROP_MAX
+};
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -88,6 +93,9 @@ TEE_Result TEE_SMP_FreeSecmem(TEE_SMP_session_t sess, TEE_SMP_secmem_t mem);
 void       TEE_SMP_CacheEnable(uint32_t on_off);
 TEE_Result TEE_SMP_AllocHandle(TEE_SMP_session_t sess, uint32_t size, TEE_SMP_secmem_t *handle, uint32_t *phyaddress);
 TEE_Result TEE_SMP_FreeHandle(TEE_SMP_session_t sess, TEE_SMP_secmem_t handle);
+TEE_Result TEE_SMP_CheckCur(TEE_SMP_session_t sess, void *data, uint32_t dsize);
+TEE_Result TEE_SMP_GetProp(TEE_SMP_session_t sess, uint32_t prop, uint32_t *value);
+TEE_Result TEE_SMP_SetProp(TEE_SMP_session_t sess, uint32_t prop, uint32_t value);
 
 TEE_Result TEE_SMP_OpaqueHandleAllocBuffer(uint32_t handle, uint32_t size, uint32_t *phyaddr);
 TEE_Result TEE_SMP_OpaqueHandleToPhy(uint32_t handle, uint32_t *phyaddr);
@@ -97,9 +105,11 @@ TEE_Result TEE_SMP_OpaqueHandleCopy(uint32_t dst, uint32_t dst_offset, uint32_t 
 TEE_Result TEE_SMP_OpaqueHandleFree(uint32_t handle);
 TEE_Result TEE_SMP_OpaqueHandleRelease(uint32_t handle);
 void       TEE_SMP_OpaqueHandleUnmap(void);
+TEE_Result TEE_SMP_OpaqueHandleCheckCur(uint32_t handle, void *data, uint32_t dsize);
+TEE_Result TEE_SMP_OpaqueHandleGetProp(uint32_t handle, uint32_t prop, uint32_t *value);
+TEE_Result TEE_SMP_OpaqueHandleSetProp(uint32_t handle, uint32_t prop, uint32_t value);
 TEE_Result TEE_SMP_GetVersion(uint32_t param_types, TEE_Param params[4]);
 void       TEE_SMP_Finalize(void);
-TEE_Result TEE_SMP_CheckCur(uint32_t handle, void *data, uint32_t dsize);
 #ifdef __cplusplus
 }
 #endif
