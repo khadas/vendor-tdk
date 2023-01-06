@@ -125,6 +125,8 @@
 #define TEE_EXTEND_KM_GET_BOOT_PATCHLEVEL               95
 #define TEE_EXTEND_PROVISION_GET_PFPK_ENC               96
 #define TEE_EXTEND_PROVISION_GET_PFPK_HMAC              97
+#define TEE_EXTEND_GET_BCC                              98
+#define TEE_EXTEND_COSE_SIGN1                           99
 
 
 // For CFG_VMX_240_COMPAT:
@@ -591,6 +593,21 @@ struct tee_provision_get_pfpk_enc_param {
 struct tee_provision_get_pfpk_hmac_param {
 	uint8_t *pfpk_hmac;
 	uint32_t *size;
+};
+
+/* ============================= BCC =============================== */
+struct tee_get_bcc_param {
+	void *bcc;
+	size_t *sz_bcc;
+};
+
+struct tee_cose_sign1_param {
+	void *payload;
+	size_t sz_payload;
+	void *aad;
+	size_t sz_aad;
+	void *cose_sign1;
+	size_t *sz_cose_sign1;
 };
 
 #define SHA256_DIGEST_SIZE 32

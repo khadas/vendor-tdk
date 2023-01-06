@@ -8,6 +8,7 @@
 /* CFG_ARM64_core is not set */
 #define CFG_ATOS_IMPL_VERSION 0x20404
 /* CFG_AV_CONTROL is not set */
+#define CFG_BCC_API 1
 /* CFG_BOOT_SECONDARY_REQUEST is not set */
 #define CFG_CACHE_API 1
 #define CFG_CIPHER_DECRYPT 1
@@ -39,6 +40,7 @@
 #define CFG_CRYPTO_DSA 1
 #define CFG_CRYPTO_ECB 1
 #define CFG_CRYPTO_ECC 1
+#define CFG_CRYPTO_ED25519 1
 #define CFG_CRYPTO_GCM 1
 /* CFG_CRYPTO_GCM_AML is not set */
 /* CFG_CRYPTO_GCM_SCP is not set */

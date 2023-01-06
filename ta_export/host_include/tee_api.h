@@ -824,4 +824,32 @@ TEE_TimerHandle TEE_Timer_Create(tee_timer_cb_t cb, void *args,
  */
 void TEE_Timer_Destroy(TEE_TimerHandle handle);
 
+/*
+ * Desc: Get TA-unique Boot Certificate Chain (BCC)
+ *
+ * Input:
+ * bcc: output bcc buffer
+ * sz_bcc: in/out size of bcc buffer and returns size used
+ *
+ * Return: TEE_SUCCESS if success
+ */
+TEE_Result TEE_Get_BCC(void *bcc, size_t *sz_bcc);
+
+/*
+ * Desc: Get COSE_Sign1 signature
+ *
+ * Input:
+ * payload:       input to sign (message, hash, etc.)
+ * sz_payload:    size of payload
+ * aad:           input AAD
+ * sz_aad:        size of aad buffer
+ * cose_sign1:    output signature buffer
+ * sz_cose_sign1: in/out size of cose_sign1
+ *
+ * Return: TEE_SUCCESS if success
+ */
+TEE_Result TEE_COSE_Sign1(void *payload, size_t sz_payload,
+		void *aad, size_t sz_aad,
+		void *cose_sign1, size_t *sz_cose_sign1);
+
 #endif /* TEE_API_H */
