@@ -53,6 +53,8 @@
 #define MBEDTLS_PEM_PARSE_C
 #define MBEDTLS_PEM_WRITE_C
 
+#define MBEDTLS_DHM_C
+
 #include <mbedtls/check_config.h>
 
 #endif /* __MBEDTLS_CONFIG_UTA_H */
