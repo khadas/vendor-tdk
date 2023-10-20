@@ -110,6 +110,24 @@ TEE_Result TEE_SMP_OpaqueHandleGetProp(uint32_t handle, uint32_t prop, uint32_t 
 TEE_Result TEE_SMP_OpaqueHandleSetProp(uint32_t handle, uint32_t prop, uint32_t value);
 TEE_Result TEE_SMP_GetVersion(uint32_t param_types, TEE_Param params[4]);
 void       TEE_SMP_Finalize(void);
+
+uint32_t TEE_SMP_GetOPLFeatureVersion(void);
+TEE_Result TEE_SMP_GetAnalogOutputSupported(uint8_t *supported);
+TEE_Result TEE_SMP_GetAnalogOutputCanDisable(uint8_t *can_disable);
+TEE_Result TEE_SMP_GetAnalogOutputState(uint8_t *enable);
+TEE_Result TEE_SMP_GetDigitalOutputSupported(uint8_t *supported);
+TEE_Result TEE_SMP_GetDigitalOutputCanDisable(uint8_t *can_disable);
+TEE_Result TEE_SMP_GetDigitalOutputState(uint8_t *enable);
+TEE_Result TEE_SMP_GetBuildinOutputSupported(uint8_t *supported);
+TEE_Result TEE_SMP_GetBuildinOutputCanDisable(uint8_t *can_disable);
+TEE_Result TEE_SMP_GetBuildinOutputState(uint8_t *enable);
+TEE_Result TEE_SMP_GetCGMSSupported(uint8_t *supported);
+TEE_Result TEE_SMP_GetCGMSState(uint8_t *cgms_field);
+TEE_Result TEE_SMP_GetCurrentHDCPLevel(uint32_t* level);
+TEE_Result TEE_SMP_OPLChannelRelease(const uint8_t *key, uint32_t key_length);
+TEE_Result TEE_SMP_CheckOPL(const uint8_t *key, uint32_t key_length,
+        uint8_t is_secure, uint32_t handle, void *opc);
+
 #ifdef __cplusplus
 }
 #endif
