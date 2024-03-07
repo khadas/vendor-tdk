@@ -582,6 +582,54 @@ typedef struct {
 	vdec_info_t output[4];
 } tvp_channel_cfg_t;
 
+typedef enum {
+	HDCP_MODE_INVALID,
+	HDCP_MODE_14 = 1,
+	HDCP_MODE_22 = 2,
+	HDCP_MODE_BUILTIN = 0xff,
+} tee_opc_hdcp_mode_e;
+
+#define TEE_VIDEO_RESOLUTION_480P  (720*480)
+#define TEE_VIDEO_RESOLUTION_720P  (1280*720)
+#define TEE_VIDEO_RESOLUTION_1080P (1920*1080)
+#define TEE_VIDEO_RESOLUTION_2K    (2048*1080)
+#define TEE_VIDEO_RESOLUTION_4K    (3840*2160)
+#define TEE_VIDEO_RESOLUTION_8K    (7680*4320)
+
+typedef uint32_t tee_opc_video_resolution_t;
+
+#define TEE_TVP_ANALOG_DISABLE_MASK        (1)
+#define TEE_TVP_ANALOG_CGMS_ENABLE_MASK    (1)
+#define TEE_TVP_ANALOG_CGMS_MODE_MASK      (3)
+
+#define TEE_TVP_ANALOG_DISABLE_SHIFT       (0)
+#define TEE_TVP_ANALOG_CGMS_ENABLE_SHIFT   (1)
+#define TEE_TVP_ANALOG_CGMS_MODE_SHIFT     (2)
+
+#define TEE_TVP_ANALOG_ENABLE              (0)
+#define TEE_TVP_ANALOG_DISABLE             (1)
+#define TEE_TVP_ANALOG_CGMS_ENABLE         (1)
+#define TEE_TVP_ANALOG_CGMS_COPY_FREE      (0)
+#define TEE_TVP_ANALOG_CGMS_COPY_ONCE      (1)
+#define TEE_TVP_ANALOG_CGMS_COPY_RESERVED  (2)
+#define TEE_TVP_ANALOG_CGMS_COPY_NEVER     (3)
+
+#define ANALOG_OUTPUT_ENABLE               (TEE_TVP_ANALOG_ENABLE          << TEE_TVP_ANALOG_DISABLE_SHIFT)
+#define ANALOG_OUTPUT_DISABLE              (TEE_TVP_ANALOG_DISABLE         << TEE_TVP_ANALOG_DISABLE_SHIFT)
+#define ANALOG_OUTPUT_CGMS_ENABLE          (TEE_TVP_ANALOG_CGMS_ENABLE     << TEE_TVP_ANALOG_CGMS_ENABLE_SHIFT)
+#define ANALOG_OUTPUT_CGMS_COPY_FREE       (TEE_TVP_ANALOG_CGMS_COPY_FREE  << TEE_TVP_ANALOG_CGMS_MODE_SHIFT)
+#define ANALOG_OUTPUT_CGMS_COPY_ONCE       (TEE_TVP_ANALOG_CGMS_COPY_ONCE  << TEE_TVP_ANALOG_CGMS_MODE_SHIFT)
+#define ANALOG_OUTPUT_CGMS_COPY_RESERVED   (TEE_TVP_ANALOG_CGMS_COPY_RESERVED << TEE_TVP_ANALOG_CGMS_MODE_SHIFT)
+#define ANALOG_OUTPUT_CGMS_COPY_NEVER      (TEE_TVP_ANALOG_CGMS_COPY_NEVER << TEE_TVP_ANALOG_CGMS_MODE_SHIFT)
+
+typedef uint32_t tee_opc_analog_enable_e;
+
+typedef struct {
+	tee_opc_hdcp_mode_e hdcp_mode;
+	tee_opc_video_resolution_t video_resolution;
+	tee_opc_analog_enable_e analog_disable;
+} tee_opc_cur_t;
+
 TEE_Result TEE_Vdec_Get_Info(vdec_info_t *info);
 
 TEE_Tvp_Handle TEE_Tvp_Open_Channel(tvp_channel_cfg_t *cfg);
@@ -589,6 +637,33 @@ TEE_Tvp_Handle TEE_Tvp_Open_Channel(tvp_channel_cfg_t *cfg);
 void TEE_Tvp_Close_Channel(TEE_Tvp_Handle handle);
 
 TEE_Result TEE_Tvp_Bind_Channel(TEE_Tvp_Handle handle, TEE_UUID *uuid);
+
+/*
+ * Desc: update the tvp cur
+ *
+ * Input:
+ * handle: the TVP handle
+ * cur: the cur to be updated
+ *
+ * Return: TEE_SUCCESS if success
+ */
+TEE_Result TEE_Tvp_Update_Cur(TEE_Tvp_Handle handle, tee_opc_cur_t *cur);
+
+/*
+ * Desc: check the tvp cur
+ *
+ * Input:
+ * handle: the TVP handle
+ * cur: the cur to be checked
+ *
+ * Return:
+ * TEE_SUCCESS if success
+ * TEE_TVP_CUR_HDCP_ERROR if hdcp check error
+ * TEE_TVP_CUR_RESOLUTION_ERROR if resolution check error
+ * TEE_TVP_CUR_ANALOG_ERROR if disable analog error
+ * TEE_TVP_CUR_ANALOG_CGMS_ERROR if set analog cgms error
+ */
+TEE_Result TEE_Tvp_Check_Cur(TEE_Tvp_Handle handle, tee_opc_cur_t *cur);
 
 TEE_Result TEE_Vdec_Mmap(paddr_t pa, size_t size, vaddr_t *va);
 

@@ -43,7 +43,7 @@
  * Output:
  * outbuf: output buffer for data
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_Efuse_Read_Tee(uint8_t *outbuf, uint32_t offset, size_t size);
 
@@ -57,7 +57,7 @@ TEE_Result TEE_Efuse_Read_Tee(uint8_t *outbuf, uint32_t offset, size_t size);
  * Output:
  * outbuf: output buffer for data
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 /* Please use new API TEE_Efuse_Read_User */
 #define TEE_Efuse_Read_Ree TEE_Efuse_Read_User
@@ -73,7 +73,7 @@ TEE_Result TEE_Efuse_Read_User(uint8_t *outbuf, uint32_t offset, size_t size);
  * Output:
  * outbuf: output buffer for data
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_Efuse_Read(uint8_t *outbuf, uint32_t offset, size_t size);
 
@@ -131,7 +131,7 @@ TEE_Result TEE_Efuse_Get_Object_Lock_State(const char *name, size_t namelen, uin
  * inbuf: the 16 byte data to write
  * block: the block index to write
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_Efuse_Write_Block(uint8_t *inbuf, uint32_t block);
 
@@ -148,7 +148,7 @@ TEE_Result TEE_Efuse_Write_Block(uint8_t *inbuf, uint32_t block);
  * buf: the output buffer
  * readlen: the read length
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_Unify_Read(uint8_t *name, uint32_t namelen,
 		uint8_t *buf, uint32_t buflen,
@@ -174,7 +174,7 @@ TEE_Result TEE_Unify_Read(uint8_t *name, uint32_t namelen,
  * mode: current HDCP mode
  * auth: is HDCP authenticated
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  *
  * Note:
  *     mode = TEE_HDCP_MODE_14, auth = TEE_HDCP_AUTH_SUCCESS, HDCP 1.4 authenticated
@@ -192,7 +192,7 @@ TEE_Result TEE_HDCP_Get_State(uint32_t *mode, uint32_t *auth);
  * keybuf: HDCP key buffer
  * keylen: HDCP key buffer length
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  *
  * Note:
  *     type = TEE_HDCP_KEY_TYPE_TX14, load HDCP tx1.4 key
@@ -208,7 +208,7 @@ TEE_Result TEE_HDCP_Load_Key(uint32_t type, uint8_t *keybuf, uint32_t keylen);
  * Input:
  * type: the streaming ID
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  *
  * Note:
  *     type = 0x00, Type 0 Content Stream
@@ -223,7 +223,7 @@ TEE_Result TEE_HDCP_Set_StreamID(uint32_t type);
  * Output:
  * type: the streaming ID
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  *
  */
 TEE_Result TEE_HDCP_Get_StreamID(uint32_t *type);
@@ -234,7 +234,7 @@ TEE_Result TEE_HDCP_Get_StreamID(uint32_t *type);
  * Output:
  * state: the HDMI plugin status
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  *
  * Note:
  * state = 1 plugged in
@@ -252,7 +252,7 @@ TEE_Result TEE_HDMI_Get_State(uint32_t *state, uint32_t *reserved);
  * info: the array(struct tee_video_fw_info info[]) to describe the firmware data
  * info_size: the array size of info
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_Video_Load_FW(uint8_t *firmware, uint32_t fw_size,
 			uint8_t *info, uint32_t info_size);
@@ -266,7 +266,7 @@ TEE_Result TEE_Video_Load_FW(uint8_t *firmware, uint32_t fw_size,
  * size: the data size
  * mode: verify mode
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_Verify_Data(uint8_t *data, uint32_t size,
 			tee_verify_mode_t mode);
@@ -278,7 +278,7 @@ TEE_Result TEE_Verify_Data(uint8_t *data, uint32_t size,
  * Output:
  * info: the vdec info
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_Vdec_Get_Info(tee_vdec_info_t *info);
 
@@ -288,7 +288,7 @@ TEE_Result TEE_Vdec_Get_Info(tee_vdec_info_t *info);
  * Input:
  * cfg: the TVP channel config
  *
- * Return: TVP handle if success
+ * Return: TVP handle if suceess
  */
 TEE_Tvp_Handle TEE_Tvp_Open_Channel(tvp_channel_cfg_t *cfg);
 
@@ -309,7 +309,7 @@ void TEE_Tvp_Close_Channel(TEE_Tvp_Handle handle);
  * handle: the TVP handle
  * uuid: the TA's UUID
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_Tvp_Bind_Channel(TEE_Tvp_Handle handle, TEE_UUID *uuid);
 
@@ -320,7 +320,7 @@ TEE_Result TEE_Tvp_Bind_Channel(TEE_Tvp_Handle handle, TEE_UUID *uuid);
  * handle: the TVP handle
  * cur: the cur to be updated
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_Tvp_Update_Cur(TEE_Tvp_Handle handle, tee_opc_cur_t *cur);
 
@@ -331,7 +331,7 @@ TEE_Result TEE_Tvp_Update_Cur(TEE_Tvp_Handle handle, tee_opc_cur_t *cur);
  * handle: the TVP handle
  * cur: the cur to be checked
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_Tvp_Check_Cur(TEE_Tvp_Handle handle, tee_opc_cur_t *cur);
 
@@ -345,7 +345,7 @@ TEE_Result TEE_Tvp_Check_Cur(TEE_Tvp_Handle handle, tee_opc_cur_t *cur);
  * Output:
  * va: the virtual address of vdec memory
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_Vdec_Mmap(paddr_t pa, size_t size, vaddr_t *va);
 
@@ -359,7 +359,7 @@ TEE_Result TEE_Vdec_Mmap(paddr_t pa, size_t size, vaddr_t *va);
  * Output:
  * va: the virtual address of vdec memory
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_Vdec_Mmap_Cached(paddr_t pa, size_t size, vaddr_t *va);
 
@@ -370,7 +370,7 @@ TEE_Result TEE_Vdec_Mmap_Cached(paddr_t pa, size_t size, vaddr_t *va);
  * pa: the vdec memory physical address
  * size:  the vdec memory size
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_Vdec_Munmap(paddr_t pa, size_t size);
 
@@ -381,7 +381,7 @@ TEE_Result TEE_Vdec_Munmap(paddr_t pa, size_t size);
  * width: the video width
  * height:  the video height
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_Tvp_Get_Video_Size(uint32_t *width, uint32_t *height);
 
@@ -392,7 +392,7 @@ TEE_Result TEE_Tvp_Get_Video_Size(uint32_t *width, uint32_t *height);
  * width: the display width
  * height:  the display height
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_Tvp_Get_Display_Size(uint32_t *width, uint32_t *height);
 
@@ -404,7 +404,7 @@ TEE_Result TEE_Tvp_Get_Display_Size(uint32_t *width, uint32_t *height);
  * enable: 1 to enable video layer, 0 to disable video layer
  * flags: reserved
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_Tvp_Set_Video_Layer(uint32_t video_layer, uint32_t enable, uint32_t flags);
 
@@ -417,7 +417,7 @@ TEE_Result TEE_Tvp_Set_Video_Layer(uint32_t video_layer, uint32_t enable, uint32
  * Output:
  * enabled:  whether the video layer enabled
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_Tvp_Get_Video_Layer(uint32_t video_layer, uint32_t *enabled);
 
@@ -427,7 +427,7 @@ TEE_Result TEE_Tvp_Get_Video_Layer(uint32_t video_layer, uint32_t *enabled);
  * Input:
  * mute: 1 to mute, 0 to unmute
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_Tvp_Set_Audio_Mute(uint32_t mute);
 
@@ -440,9 +440,26 @@ TEE_Result TEE_Tvp_Set_Audio_Mute(uint32_t mute);
  * Output:
  * status: the memory status
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_Tvp_Get_Status(uint32_t type, uint32_t *status);
+
+/*
+ * Desc: Enable periodic cur check timer with 1000ms expriy period.
+ *
+ * Input:
+ * period: (RFU) timer duration
+ *
+ * Return: TEE_SUCCESS if success
+ */
+TEE_Result TEE_Tvp_Enable_Cur_Check_Timer(uint32_t period);
+
+/*
+ * Desc: disable periodic cur check timer
+ *
+ * Return: TEE_SUCCESS if success
+ */
+TEE_Result TEE_Tvp_Disable_Cur_Check_Timer(void);
 
 /* ================================ KEYMASTER API ================================ */
 /*
@@ -458,7 +475,7 @@ TEE_Result TEE_Tvp_Get_Status(uint32_t type, uint32_t *status);
  * boot_key: boot_key buffer
  * boot_hash: boot_key hash buffer
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_Km_Get_Boot_Params(uint32_t *locked, uint32_t *boot_state,
 		uint8_t *boot_key, uint32_t *boot_key_len,
@@ -474,7 +491,7 @@ TEE_Result TEE_Km_Get_Boot_Patchlevel(uint32_t *device_locked,
 /*
  * Desc: desc init
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_Desc_Init(void);
 
@@ -487,7 +504,7 @@ TEE_Result TEE_Desc_Init(void);
  * Output:
  * fd: desc fd
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_Desc_AllocChannel(int dsc_no, int *fd);
 
@@ -499,7 +516,7 @@ TEE_Result TEE_Desc_AllocChannel(int dsc_no, int *fd);
  * fd: desc fd
  * algo: desc algo
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_Desc_Set_Algo(int dsc_no, int fd, int algo);
 
@@ -511,7 +528,7 @@ TEE_Result TEE_Desc_Set_Algo(int dsc_no, int fd, int algo);
  * fd: desc fd
  * mode: desc mode
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_Desc_Set_Mode(int dsc_no, int fd, int mode);
 
@@ -523,7 +540,7 @@ TEE_Result TEE_Desc_Set_Mode(int dsc_no, int fd, int mode);
  * fd: desc fd
  * pid: stream pid number need to desc
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_Desc_Set_Pid(int dsc_no, int fd, int pid);
 
@@ -537,7 +554,7 @@ TEE_Result TEE_Desc_Set_Pid(int dsc_no, int fd, int pid);
  * key: key addr
  * key_type: 0 stands for odd, 1 even
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_Desc_Set_Key(int dsc_no, int fd, int parity, uint8_t *key,
 		uint32_t key_type);
@@ -549,7 +566,7 @@ TEE_Result TEE_Desc_Set_Key(int dsc_no, int fd, int parity, uint8_t *key,
  * module: desc number
  * output: dmx number to deliver the stream
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_Desc_Set_Output(int module, int output);
 
@@ -560,7 +577,7 @@ TEE_Result TEE_Desc_Set_Output(int module, int output);
  * desc_no: descrambler number
  * fd: desc fd
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_Desc_FreeChannel(int dsc_no, int fd);
 
@@ -571,14 +588,14 @@ TEE_Result TEE_Desc_FreeChannel(int dsc_no, int fd);
  * desc_no: descrambler number
  * all: channels need to reset
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_Desc_Reset(int dsc_no, int all);
 
 /*
  * Desc: desc exit
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_Desc_Exit(void);
 
@@ -602,8 +619,8 @@ TEE_TimerHandle TEE_Timer_Create(tee_timer_cb_t cb, void *args,
  * Input:
  * handle: Timer handle
  *
- * Note: The timer must be destroyed before closing TA session,
- *       suggest that check and destroy all TA timer
+ * Note: The timer must be destoryed before closing TA session,
+ *       suggest that check and destory all TA timer
  *       in TA_CloseSessionEntryPoint()
  */
 void TEE_Timer_Destroy(TEE_TimerHandle handle);
@@ -622,7 +639,7 @@ void TEE_Timer_Destroy(TEE_TimerHandle handle);
  * dst: encrypted code
  * dst_len: encrypted code size
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_CipherEncrypt_With_Kwrap(const uint8_t *iv, uint32_t iv_len,
 		const uint8_t *src, uint32_t src_len, uint8_t *dst, uint32_t *dst_len);
@@ -640,7 +657,7 @@ TEE_Result TEE_CipherEncrypt_With_Kwrap(const uint8_t *iv, uint32_t iv_len,
  * dst: decrypted code
  * dst_len: decrypted code size
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_CipherDecrypt_With_Kwrap(const uint8_t *iv, uint32_t iv_len,
 		const uint8_t *src, uint32_t src_len, uint8_t *dst, uint32_t *dst_len);
@@ -661,7 +678,7 @@ TEE_Result TEE_CipherDecrypt_With_Kwrap(const uint8_t *iv, uint32_t iv_len,
  * dst: decrypted code
  * dst_len: decrypted code size
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_AEDecrypt_With_Derived_Kwrap(uint32_t algorithm,
 		uint8_t *iv, uint32_t ivlen,
@@ -684,7 +701,7 @@ TEE_Result TEE_AEDecrypt_With_Derived_Kwrap(uint32_t algorithm,
  * dst: decrypted code
  * dst_len: decrypted code size
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_AEDecrypt_With_Derived_Ksecret(uint32_t algorithm,
 		uint8_t *iv, uint32_t ivlen,
@@ -709,7 +726,7 @@ TEE_Result TEE_AEDecrypt_With_Derived_Ksecret(uint32_t algorithm,
  * dst: decrypted code
  * dst_len: decrypted code size
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_AEDecrypt_With_SESG_Kwrap(
 		uint8_t *iv, uint32_t ivlen,
@@ -719,20 +736,6 @@ TEE_Result TEE_AEDecrypt_With_SESG_Kwrap(
 		uint8_t *app_uuid, uint32_t app_uuid_len,
 		uint8_t *arg2, uint32_t arg2len);
 
-typedef struct {
-	uint32_t sesg_proto_ver;
-} sesg_arg2_t;
-
-typedef struct {
-	uint8_t proto_ver;
-	uint8_t rfu[31];
-} WrappedDataAAD;
-
-typedef enum {
-	SESG_PROTO_V1 = 1,
-	SESG_PROTO_V2 = 2,
-} sesg_proto_ver_e;
-
 /*
  * Desc: Get pfpk_enc which use to encrypt Provision key
  *
@@ -740,7 +743,7 @@ typedef enum {
  * pfpk_enc: pfpk_enc buffer / pfpk_enc
  * size: buffer size / pfpk_enc size
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_Provision_Get_PFPK_ENC(uint8_t *pfpk_enc, uint32_t *size);
 
@@ -751,31 +754,9 @@ TEE_Result TEE_Provision_Get_PFPK_ENC(uint8_t *pfpk_enc, uint32_t *size);
  * pfpk_hmac: pfpk_hmac buffer / pfpk_hmac
  * size: buffer size / pfpk_hmac size
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_Provision_Get_PFPK_HMAC(uint8_t *pfpk_hmac, uint32_t *size);
-
-/*
- * Desc: Get pfpk_enc from pcpk which use to encrypt Provision key
- *
- * Input / Output:
- * pfpk_enc: pfpk_enc buffer / pfpk_enc
- * size: buffer size / pfpk_enc size
- *
- * Return: TEE_SUCCESS if success
- */
-TEE_Result TEE_Provision_Get_PFPK_ENC_From_PCPK(uint8_t *pfpk_enc, uint32_t *size);
-
-/*
- * Desc: Get pfpk_hmac from pcpk which use to derive DAC(Device Authentication Code)
- *
- * Input / Output:
- * pfpk_hmac: pfpk_hmac buffer / pfpk_hmac
- * size: buffer size / pfpk_hmac size
- *
- * Return: TEE_SUCCESS if success
- */
-TEE_Result TEE_Provision_Get_PFPK_HMAC_From_PCPK(uint8_t *pfpk_hmac, uint32_t *size);
 
 /* ================================ KEYTABLE API ================================ */
 /*
@@ -787,7 +768,7 @@ TEE_Result TEE_Provision_Get_PFPK_HMAC_From_PCPK(uint8_t *pfpk_hmac, uint32_t *s
  * Output:
  * handle: key table entry handle
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_Keytable_Alloc(uint32_t flag, uint32_t *handle);
 
@@ -798,7 +779,7 @@ TEE_Result TEE_Keytable_Alloc(uint32_t flag, uint32_t *handle);
  * handle: key table entry handle
  * cfg: key table configuration pointer
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_Keytable_Config(uint32_t handle, tee_key_cfg_t *cfg);
 
@@ -810,7 +791,7 @@ TEE_Result TEE_Keytable_Config(uint32_t handle, tee_key_cfg_t *cfg);
  * key: key data
  * keylen: length of key
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_Keytable_Set_Key(uint32_t handle, uint8_t *key, uint32_t keylen);
 
@@ -830,7 +811,7 @@ TEE_Result TEE_Keytable_Set_Hw_Key(uint32_t handle);
  * Input:
  * handle: key table entry handle
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_Keytable_Free(uint32_t handle);
 
@@ -849,7 +830,7 @@ TEE_Result TEE_Keytable_Free(uint32_t handle);
  * dst: encrypted code
  * dst_len: encrypted code size
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_CipherEncrypt_With_KT(uint32_t handle, uint32_t algo,
 		const uint8_t *iv, uint32_t iv_len,
@@ -872,7 +853,7 @@ TEE_Result TEE_CipherEncrypt_With_KT(uint32_t handle, uint32_t algo,
  * dst: decrypted code
  * dst_len: decrypted code size
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_CipherDecrypt_With_KT(uint32_t handle, uint32_t algo,
 		const uint8_t *iv, uint32_t iv_len,
@@ -898,7 +879,7 @@ TEE_Result TEE_CipherDecrypt_With_KT(uint32_t handle, uint32_t algo,
  * dst: encrypted code
  * dst_len: encrypted code size
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_CipherEncrypt_With_KT_EXT(
 		uint32_t handle, uint32_t algo,
@@ -927,7 +908,7 @@ TEE_Result TEE_CipherEncrypt_With_KT_EXT(
  * dst: decrypted code
  * dst_len: decrypted code size
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_CipherDecrypt_With_KT_EXT(
 		uint32_t handle, uint32_t algo,
@@ -1005,7 +986,7 @@ TEE_Result TEE_MACCompare_With_KT(
 * handle: key table entry handle
 * status: key status
 *
-* Return: TEE_SUCCESS if success
+* Return: TEE_SUCCESS if suceess
 */
 TEE_Result TEE_Keytable_Get_Status(uint32_t handle, uint32_t *status);
 
@@ -1015,7 +996,7 @@ TEE_Result TEE_Keytable_Get_Status(uint32_t handle, uint32_t *status);
  * Input:
  * handle: key table entry handle
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_Keytable_Invalidate(uint32_t handle);
 
@@ -1036,7 +1017,7 @@ TEE_Result TEE_Cipher_Thread_Lock(uint32_t thread_id, uint8_t lock);
  * Input:
  * p_conf: the key ladder configuration
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_KL_Run_V2(tee_kl_run_conf_t *p_conf);
 
@@ -1049,7 +1030,7 @@ TEE_Result TEE_KL_Run_V2(tee_kl_run_conf_t *p_conf);
  * Output:
  * dnonce: the response dnonce value
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_KL_GetResponseToChallenge_V2(
 		tee_kl_cr_conf_t *p_conf,
@@ -1061,7 +1042,7 @@ TEE_Result TEE_KL_GetResponseToChallenge_V2(
  * Input:
  * p_conf: the key ladder configuration
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_KL_Run_NV(tee_kl_run_conf_nv_t *p_conf);
 
@@ -1071,7 +1052,7 @@ TEE_Result TEE_KL_Run_NV(tee_kl_run_conf_nv_t *p_conf);
  * Input:
  * p_conf: the key ladder configuration
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_KL_Run(tee_kl_run_params_t *p_conf);
 
@@ -1084,7 +1065,7 @@ TEE_Result TEE_KL_Run(tee_kl_run_params_t *p_conf);
  * Output:
  * dnonce: the response dnonce value
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_KL_GetResponseToChallenge(
 	tee_kl_cr_params_t *p_conf, uint8_t dnonce[16]);
@@ -1101,14 +1082,14 @@ const INgwmHal* ngwmGetHalInterface(void);
 /*
  * Desc: Initialize verimatrix watermark
  *
- * Return: VM_HW_OK if success
+ * Return: VM_HW_OK if suceess
  */
 VM_HW_Err_t VM_HW_Init(void);
 
 /*
  * Desc: Terminate Verimatrix watermark
  *
- * Return: VM_HW_OK if success
+ * Return: VM_HW_OK if suceess
  */
 VM_HW_Err_t VM_HW_Term(void);
 
@@ -1118,7 +1099,7 @@ VM_HW_Err_t VM_HW_Term(void);
  * Input:
  * bServiceIdx: service index
  *
- * Return: VM_HW_OK if success
+ * Return: VM_HW_OK if suceess
  */
 VM_HW_Err_t VM_HW_OpenSession(uint8_t bServiceIdx);
 
@@ -1128,7 +1109,7 @@ VM_HW_Err_t VM_HW_OpenSession(uint8_t bServiceIdx);
  * Input:
  * bServiceIdx: service index
  *
- * Return: VM_HW_OK if success
+ * Return: VM_HW_OK if suceess
  */
 VM_HW_Err_t VM_HW_CloseSession(uint8_t bServiceIdx);
 
@@ -1139,7 +1120,7 @@ VM_HW_Err_t VM_HW_CloseSession(uint8_t bServiceIdx);
  * bServiceIdx: service index
  * hwParameters: parameters data
  *
- * Return: VM_HW_OK if success
+ * Return: VM_HW_OK if suceess
  */
 VM_HW_Err_t VM_HW_SetParameters_Rend(uint8_t bServiceIdx, vmx_hw_soc_rend_t* hwParameters);
 
@@ -1151,7 +1132,7 @@ VM_HW_Err_t VM_HW_SetParameters_Rend(uint8_t bServiceIdx, vmx_hw_soc_rend_t* hwP
  * arg: parameters data
  * len: parameters data size
  *
- * Return: VM_HW_OK if success
+ * Return: VM_HW_OK if suceess
  */
 VM_HW_Err_t VM_HW_SetParameters_Last(uint8_t bServiceIdx, uint8_t *arg, unsigned int len);
 
@@ -1164,7 +1145,7 @@ VM_HW_Err_t VM_HW_SetParameters_Last(uint8_t bServiceIdx, uint8_t *arg, unsigned
  * len: cwc size
  * klStage: keyladder stage
  *
- * Return: VM_HW_OK if success
+ * Return: VM_HW_OK if suceess
  */
 VM_HW_Err_t VM_HW_SetCWC(uint8_t bServiceIdx, uint8_t* Kwmcwc, size_t len, uint8_t klStage);
 
@@ -1202,7 +1183,7 @@ TEE_Result TEE_Mutex_Unlock(void);
  * va: the shm virtual address
  * size: the size of shm
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_Shm_Mmap(uint32_t va, uint32_t size);
 
@@ -1213,7 +1194,7 @@ TEE_Result TEE_Shm_Mmap(uint32_t va, uint32_t size);
  * va: the shm virtual address
  * size: the size of shm
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_Shm_Munmap(uint32_t va, uint32_t size);
 
@@ -1224,7 +1205,7 @@ TEE_Result TEE_Shm_Munmap(uint32_t va, uint32_t size);
  * randomBuffer: buff for random number
  * randomBufferLen: buff length
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_ReadRngPool(void *randomBuffer, uint32_t randomBufferLen);
 
@@ -1235,7 +1216,7 @@ TEE_Result TEE_ReadRngPool(void *randomBuffer, uint32_t randomBufferLen);
  * inbuf: buff sent to mailbox
  * inlen: length of inbuf, must aligned with 4
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_Mailbox_Send(uint8_t *inbuf, uint32_t inlen);
 
@@ -1246,7 +1227,7 @@ TEE_Result TEE_Mailbox_Send(uint8_t *inbuf, uint32_t inlen);
  * outbuf: buff receive from mailbox
  * outlen: length of outbuf
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_Mailbox_Recv(uint8_t *outbuf, uint32_t *outlen);
 
@@ -1254,7 +1235,7 @@ TEE_Result TEE_Mailbox_Recv(uint8_t *outbuf, uint32_t *outlen);
 /*
  * Desc: storage sync
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_SyncPersistentObject(void);
 
@@ -1264,7 +1245,7 @@ TEE_Result TEE_SyncPersistentObject(void);
  * Output:
  * handle: cert handle
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_Nagra_Cert_Lock(TEE_Nagra_Cert_Handle *handle);
 
@@ -1274,14 +1255,14 @@ TEE_Result TEE_Nagra_Cert_Lock(TEE_Nagra_Cert_Handle *handle);
  * Output:
  * handle: cert handle
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_Nagra_Cert_Unlock(TEE_Nagra_Cert_Handle handle);
 
 /*
  * Desc: CERT Reset
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_Nagra_Cert_Reset(void);
 
@@ -1296,10 +1277,60 @@ TEE_Result TEE_Nagra_Cert_Reset(void);
  * Output:
  * cmds_processed: processed command num
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_Nagra_Cert_Exchange(TEE_Nagra_Cert_Handle handle, size_t cmd_num,
 		cert_command_t *commands, size_t *cmds_processed);
+
+/*
+ * Desc: Pvr Set Buffer Info
+ *
+ * Input:
+ * p_param: the parameters for setting buffer info
+ *
+ * Return: TEE_SUCCESS if success
+ */
+TEE_Result TEE_Nagra_Pvr_Set_Buffer_Info(tee_nagra_pvr_set_buffer_params_t *p_param);
+
+/*
+ * Desc: Pvr Release Buffer Info
+ *
+ * Input:
+ * p_param: the parameters for release buffer info
+ *
+ * Return: TEE_SUCCESS if success
+ */
+TEE_Result TEE_Nagra_Pvr_Release_Buffer_Info(tee_nagra_pvr_release_buffer_params_t *p_param);
+
+/*
+ * Desc: Pvr Set Keytable Info
+ *
+ * Input:
+ * p_param: the parameters for setting keytable info
+ *
+ * Return: TEE_SUCCESS if success
+ */
+TEE_Result TEE_Nagra_Pvr_Set_Kt_Info(tee_nagra_pvr_set_kt_info_params_t *p_param);
+
+/*
+ * Desc: Pvr Release Keytable Info
+ *
+ * Input:
+ * p_param: the parameters for release keytable info
+ *
+ * Return: TEE_SUCCESS if success
+ */
+TEE_Result TEE_Nagra_Pvr_Release_Kt_Info(tee_nagra_pvr_release_kt_info_params_t *p_param);
+
+/*
+ * Desc: Pvr Check Security
+ *
+ * Input:
+ * p_param: the parameters for checking security
+ *
+ * Return: TEE_SUCCESS if success
+ */
+TEE_Result TEE_Nagra_Pvr_Check_Security(tee_nagra_pvr_check_security_params_t *p_param);
 
 /*
  * Desc: Read out ID for CAS or keys
@@ -1312,7 +1343,7 @@ TEE_Result TEE_Nagra_Cert_Exchange(TEE_Nagra_Cert_Handle handle, size_t cmd_num,
  * Output:
  * id: id will hold the requested ID
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_Get_CAS_ID(uint32_t type, uint8_t *id, uint32_t len);
 
@@ -1322,7 +1353,7 @@ TEE_Result TEE_Get_CAS_ID(uint32_t type, uint8_t *id, uint32_t len);
  * Input:
  * param: parameters for deriving key
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_MKL_MSR_Derive_Key(tee_mkl_msr_derive_key_param_t *param);
 
@@ -1335,7 +1366,7 @@ TEE_Result TEE_MKL_MSR_Derive_Key(tee_mkl_msr_derive_key_param_t *param);
  * offset: Offset from the base of NSK memory
  * size: length of output, Number of bytes
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_NSK_Read8(nsk_mem_type_t mem_type, uint8_t *output, uint32_t offset, size_t size);
 
@@ -1348,7 +1379,7 @@ TEE_Result TEE_NSK_Read8(nsk_mem_type_t mem_type, uint8_t *output, uint32_t offs
  * offset: Offset from the base of NSK memory
  * size: length of output, Number of 32-bit words
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_NSK_Read32(nsk_mem_type_t mem_type, uint32_t *output, uint32_t offset, size_t size);
 
@@ -1361,7 +1392,7 @@ TEE_Result TEE_NSK_Read32(nsk_mem_type_t mem_type, uint32_t *output, uint32_t of
  * offset: Offset from the base of NSK memory
  * size: length of input, Number of bytes
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_NSK_Write8(nsk_mem_type_t mem_type, uint8_t *input, uint32_t offset, size_t size);
 
@@ -1374,7 +1405,7 @@ TEE_Result TEE_NSK_Write8(nsk_mem_type_t mem_type, uint8_t *input, uint32_t offs
  * offset: Offset from the base of NSK memory
  * size: length of input, Number of 32-bit words
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_NSK_Write32(nsk_mem_type_t mem_type, uint32_t *input, uint32_t offset, size_t size);
 
@@ -1387,7 +1418,7 @@ TEE_Result TEE_NSK_Write32(nsk_mem_type_t mem_type, uint32_t *input, uint32_t of
  * scb_out: scb out value
  * scb_as_is: scb as is value
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_NSK_SetSCB(uint32_t ktes[3], uint32_t kt_user_id, uint8_t scb_out, uint8_t scb_as_is);
 
@@ -1395,36 +1426,8 @@ TEE_Result TEE_NSK_SetSCB(uint32_t ktes[3], uint32_t kt_user_id, uint8_t scb_out
 /*
  * Desc: Configure a processor
  *
- * Return: TEE_SUCCESS if success
+ * Return: TEE_SUCCESS if suceess
  */
 TEE_Result TEE_Processor_Config(proc_e proc, void* data, uint32_t len);
 
-
-/*
- * Desc: Get TA-unique Boot Certificate Chain (BCC)
- *
- * Input:
- * bcc: output bcc buffer
- * sz_bcc: in/out size of bcc buffer and returns size used
- *
- * Return: TEE_SUCCESS if success
- */
-TEE_Result TEE_Get_BCC(void *bcc, size_t *sz_bcc);
-
-/*
- * Desc: Get COSE_Sign1 signature
- *
- * Input:
- * payload:       input to sign (message, hash, etc.)
- * sz_payload:    size of payload
- * aad:           input AAD
- * sz_aad:        size of aad buffer
- * cose_sign1:    output signature buffer
- * sz_cose_sign1: in/out size of cose_sign1
- *
- * Return: TEE_SUCCESS if success
- */
-TEE_Result TEE_COSE_Sign1(void *payload, size_t sz_payload,
-		void *aad, size_t sz_aad,
-		void *cose_sign1, size_t *sz_cose_sign1);
 #endif

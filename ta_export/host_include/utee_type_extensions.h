@@ -127,7 +127,8 @@
 #define TEE_EXTEND_PROVISION_GET_PFPK_HMAC              97
 #define TEE_EXTEND_GET_BCC                              98
 #define TEE_EXTEND_COSE_SIGN1                           99
-
+#define TEE_EXTEND_TVP_UPDATE_CUR                       100
+#define TEE_EXTEND_TVP_CHECK_CUR                        101
 
 // For CFG_VMX_240_COMPAT:
 #define TEE_EXTEND_TVP_ENTER_VMX_2017_240               33
@@ -251,6 +252,11 @@ struct tee_tvp_video_layer_param {
 
 struct tee_tvp_audio_mute_param {
 	uint32_t mute;
+};
+
+struct tee_tvp_cur_param {
+	TEE_Tvp_Handle handle;
+	tee_opc_cur_t cur;
 };
 
 struct tee_asymm_sign_padding_param {

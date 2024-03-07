@@ -72,7 +72,7 @@ typedef struct {
 } tvp_channel_cfg_t;
 
 typedef enum {
-	HDCP_MODE_INVALID,
+	HDCP_MODE_INVAILD,
 	HDCP_MODE_14 = 1,
 	HDCP_MODE_22 = 2,
 	HDCP_MODE_BUILTIN = 0xff,
@@ -561,7 +561,7 @@ typedef enum VM_HW_Err {
 
 // Verimatrix WaterMark Core Parameters
 typedef struct {
-//version
+//versioning
 	uint8_t		version_major;
 	uint8_t		version_minor;
 //embedding part
@@ -604,6 +604,37 @@ typedef struct {
 	uint8_t cmd[4];
 	timeout_type_t timeout;
 } cert_command_t;
+
+/* nagra pvr definition */
+#define TEE_NAGRA_PVR_PID_ARRAY_MAX (64)
+
+typedef struct tee_nagra_pvr_set_buffer_params {
+	uint64_t buf_addr; /* pvr encrypt buffer addr */
+	uint32_t buf_len;  /* pvr encrypt buffer size */
+	uint32_t ts_id;    /* pvr ts id */
+} tee_nagra_pvr_set_buffer_params_t;
+
+typedef struct tee_nagra_pvr_release_buffer_params {
+	uint64_t buf_addr; /* pvr encrypt buffer addr */
+} tee_nagra_pvr_release_buffer_params_t;
+
+typedef struct tee_nagra_pvr_set_kt_info_params {
+	uint32_t kt_entry; /* pvr descramble key table entry */
+	uint32_t ts_id;    /* pvr ts id */
+} tee_nagra_pvr_set_kt_info_params_t;
+
+typedef struct tee_nagra_pvr_release_kt_info_params {
+	uint32_t kt_entry; /* pvr key table entry */
+} tee_nagra_pvr_release_kt_info_params_t;
+
+typedef struct tee_nagra_pvr_check_security_params {
+	uint64_t buf_addr;       /* pvr encrypt buffer addr */
+	uint32_t buf_len;        /* pvr encrypt buffer size */
+	uint32_t tsout_buf_addr; /* pvr ts output buffer(dma) addr */
+	uint32_t tsout_buf_len;  /* pvr ts output buffer(dma) size */
+	uint32_t pid_array_size; /* pvr pid array size */
+	uint32_t pid_array[TEE_NAGRA_PVR_PID_ARRAY_MAX]; /* pvr pid array */
+} tee_nagra_pvr_check_security_params_t;
 
 typedef enum {
 	TEE_CAS_ID_AML,

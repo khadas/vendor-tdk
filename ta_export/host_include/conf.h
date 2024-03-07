@@ -7,8 +7,9 @@
 #define CFG_ARM32_ta_arm32 1
 /* CFG_ARM64_core is not set */
 #define CFG_ATOS_IMPL_VERSION 0x20404
-/* CFG_AV_CONTROL is not set */
+#define CFG_AV_CONTROL 1
 #define CFG_BCC_API 1
+#define CFG_BL_VERSION 1
 /* CFG_BOOT_SECONDARY_REQUEST is not set */
 #define CFG_CACHE_API 1
 #define CFG_CIPHER_DECRYPT 1
@@ -100,6 +101,7 @@
 #define CFG_NUM_THREADS 4
 #define CFG_OPTEE_REVISION_MAJOR 2
 #define CFG_OPTEE_REVISION_MINOR 4
+#define CFG_OTP_LIC 1
 #define CFG_OTP_SUPPORT 1
 /* CFG_PAGED_USER_TA is not set */
 #define CFG_PM_STUBS 1
@@ -115,7 +117,7 @@
 /* CFG_RPMB_FS_FORMAT is not set */
 /* CFG_RPMB_TEST is not set */
 /* CFG_RPMB_WRITE_KEY is not set */
-#define CFG_RSV_MEM_SIZE 0x01800000
+#define CFG_RSV_MEM_SIZE 0x01C00000
 /* CFG_RW_REG_API is not set */
 /* CFG_SECURE_DATA_PATH is not set */
 #define CFG_SECURE_STORAGE 1
@@ -147,7 +149,7 @@
 #define CFG_TEE_RAM_VA_SIZE 0x100000
 #define CFG_TEE_TA_LOG_LEVEL 1
 /* CFG_TEE_TA_MALLOC_DEBUG is not set */
-/* CFG_TEE_TIMER is not set */
+#define CFG_TEE_TIMER 1
 #define CFG_TVP 1
 #define CFG_TVP_MEM_POOL1_SIZE 0x70000000ul
 #define CFG_TVP_MEM_POOL1_START 0x10000000ul
@@ -156,7 +158,7 @@
 #define CFG_TZDRAM_BASE 0x05300000
 /* CFG_ULIBS_GPROF is not set */
 #define CFG_UNIFY_KEY 1
-#define CFG_VDEC_RAM_SIZE 0x0400000
+#define CFG_VDEC_RAM_SIZE 0x0800000
 #define CFG_VIDEO_FW_LOAD 1
 #define CFG_VIDEO_FW_RAM_SIZE 0x100000
 /* CFG_VMX_2017_240_COMPAT is not set */

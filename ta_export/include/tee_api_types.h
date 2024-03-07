@@ -236,6 +236,7 @@ typedef void *TEE_Session;
 #define TEE_TVP_CFG_CAS_LIVE            (2<<TEE_TVP_VIDEO_TYPE_OFFSET)
 #define TEE_TVP_CFG_CAS_RECORD          (3<<TEE_TVP_VIDEO_TYPE_OFFSET)
 #define TEE_TVP_CFG_CAS_PLAYBACK        (4<<TEE_TVP_VIDEO_TYPE_OFFSET)
+#define TEE_TVP_CFG_NON_TVP             (5<<TEE_TVP_VIDEO_TYPE_OFFSET)
 
 typedef void *TEE_Tvp_Handle;
 
